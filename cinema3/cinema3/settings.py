@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cinema3.wsgi.application'
 
 
-# Database
+# Databaseeeeee
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
