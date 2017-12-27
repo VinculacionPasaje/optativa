@@ -24,6 +24,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- flexSlider -->
 <link rel="stylesheet" media="screen" type="text/css"  property="" href="{{url('frontend/css/flexslider.css')}}">
 
+<link rel="shortcut icon" href="{{url('frontend/images/ico/ico.ico')}}">
+
+
 
 <script src="{{url('frontend/js/jquery-2.1.4.min.js')}}"></script>
 <script src="{{url('frontend/js/owl.carousel.js')}}"></script>

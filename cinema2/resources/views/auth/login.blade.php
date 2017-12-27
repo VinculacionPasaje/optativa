@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+          @if (session('mensaje-registro'))
+              @include('mensajes.msj_correcto')
+          @endif
+          
             <div class="panel panel-default">
 
                 <div class="modal-header">LOGIN</div>

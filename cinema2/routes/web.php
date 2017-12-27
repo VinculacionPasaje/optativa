@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+       Route::get('administracion','FrontendController@admin');
+
         // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
         Route::post('login', 'Auth\LoginController@login');
@@ -22,7 +24,8 @@ Route::get('/', function () {
 
         // Registration Routes...
          Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-         Route::post('register', 'Auth\RegisterController@register');
+          Route::post('register', ['as' => 'register', 'uses' => 'UserController@register'] );
+         //Route::post('register', 'Auth\RegisterController@register');
 
 
         // Password Reset Routes...

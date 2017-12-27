@@ -24,6 +24,10 @@
 <link rel="stylesheet" media="all" type="text/css"  href="{{url('frontend/css/popuo-box.css')}}">
 <link rel="stylesheet" media="all" type="text/css"  href="{{url('frontend/css/font-awesome.min.css')}}">
 <link rel="stylesheet" media="all" type="text/css"  href="{{url('frontend/css/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{url('frontend/css/mensajes.css')}}">
+<link rel="stylesheet" href="{{url('frontend/css/sweetalert.css')}}">
+<link rel="stylesheet" href="{{url('frontend/css/alertify.css')}}">
+<link rel="shortcut icon" href="{{url('frontend/images/ico/ico.ico')}}">
 <!-- flexSlider -->
 <link rel="stylesheet" media="screen" type="text/css"  property="" href="{{url('frontend/css/flexslider.css')}}">
 
