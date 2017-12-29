@@ -1,0 +1,243 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              {%block title %}
+            <title>CINEMA TV - DASHBOARD</title>
+            {%endblock%}
+    
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/iCheck/all.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/morris/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/datepicker/datepicker3.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/timepicker/bootstrap-timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker-bs3.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'plugins/datatables/dataTables.bootstrap.css' %}">
+
+    <link rel="stylesheet" href="{% static 'dist/css/mensajes.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/sweetalert.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/alertify.css' %}">
+    
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="background: #ecf0f5 !important;">
+<div class="wrapper" id="contenido_principal">
+
+    <header class="main-header">
+   
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <span class="logo-mini"><b>AD</b></span>
+            <span class="logo-lg"><b>ADMINISTRACIÓN</b></span>
+        </a>
+        
+        <nav class="navbar navbar-static-top" role="navigation">
+        
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Navegación</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+           
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <small class="bg-red">Online</small>
+                           
+                                    <td>
+                                        <img src="#" class="user-image" alt="User Image"/>
+                                    </td>
+                                
+
+                            
+                            <span class="hidden-xs">Fernando Castillo</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+
+                                  
+                                    <td>
+                                        <img src="#" class="img-circle" alt="User Image"/>
+                                    </td>
+                               
+
+                                <p>
+                                   Fernando Castillo
+                                </p>
+                            </li>
+
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+
+                                <div class="pull-right">
+                                            <a href="#"
+                                            
+                                                     class="btn btn-default btn-flat">
+                                            Salir
+                                        </a>
+                                  
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </nav>
+
+        
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                
+                    <td>
+                        <img src="#" class="img-circle" alt="User Image"/>
+                    </td>
+               
+                  
+                
+                </div>
+                <div class="pull-left info">
+                <p>Fernando Castillo</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-laptop"></i>
+                        <span>Inicio</span>
+                    </a>
+
+                </li>
+                
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-newspaper-o"></i><span>NOTICIAS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li>
+                            <a href="#"><i class="fa fa-folder-open"></i> Categorias Noticias
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Noticias
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                
+                             
+                            </ul>
+                        </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Comentarios
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                           <ul class="treeview-menu">
+
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Aprovados</a></li>
+                                <li><a href="#"><i class="fa fa-list-ul"></i>No Aprobados</a></li>
+                       
+                       
+                                
+                             
+                            </ul>
+                        </li>
+                     </ul>
+                </li>
+
+
+
+
+                
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!--Contenido-->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="background: #ecf0f5 !important;">
+   
+    <!-- Main content -->
+        <section class="content" style="background: #ecf0f5 !important;">
+           
+            {%block contenido %}
+
+            {%endblock%}
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <script src="{%static 'plugins/jQuery/jQuery-2.1.4.min.js'%}"></script>
+    <script src="{%static 'bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'plugins/moment.min.js'%}"></script>
+    <script src="{%static 'plugins/daterangepicker/daterangepicker.js'%}"></script>
+    <script src="{%static 'plugins/datepicker/bootstrap-datepicker.js'%}"></script>
+    <script src="{%static 'plugins/timepicker/bootstrap-timepicker.js'%}"></script>
+    <script src="{%static 'plugins/slimScroll/jquery.slimscroll.min.js'%}"></script>
+    <script src="{%static 'plugins/chartjs/Chart.min.js'%}"></script>
+    <script src="{%static 'dist/js/app.min.js'%}"></script>
+    <script src="{%static 'dist/js/sweetalert.min.js'%}"></script>
+    <script src="{%static 'dist/js/jquery.inputmask.js'%}"></script>
+    <script src="{%static 'dist/js/jquery.inputmask.date.extensions.js'%}"></script>
+    <script src="{%static 'dist/js/jquery.inputmask.extensions.js'%}"></script>
+
+    <script src="{%static 'plugins/datatables/jquery.dataTables.min.js'%}"></script>
+    <script src="{%static 'plugins/datatables/dataTables.bootstrap.min.js'%}"></script>
+     <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+            "paging": false,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false
+            });
+        });
+        </script>
+ 
+
+
+
+
+   {%block script %}
+
+   {%endblock%}
+    </div>
+</body>
+</html>

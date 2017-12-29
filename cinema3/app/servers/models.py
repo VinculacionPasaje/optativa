@@ -19,7 +19,7 @@ class Server(models.Model):
     state = models.CharField(max_length=1, default='1', editable=False);
 
     def __str__(self):
-        return self.language;
+        return self.name;
     
     class Meta:
         db_table = 'SERVERS';
