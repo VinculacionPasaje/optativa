@@ -1,0 +1,50 @@
+{%extends 'base/base.html'%}
+
+
+{%block header%}
+
+<section class="content-header">
+        <h1>Peliculas<small>Agregar</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li class="active">Peliculas</li>
+            <li class="active">Agregar</li>
+        </ol>
+    </section>
+
+
+{%endblock%}
+
+{%block contenido%}
+
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+
+
+ <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Nueva Pelicula</h3>
+        </div><!-- /.box-header holaaaa -->
+        <div class="box-body">
+            
+            <form action="" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                 {{ form.as_p}}
+                 <button type="submit" class="btn btn-primary"> Guardar </button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+{%endblock%}
+
+

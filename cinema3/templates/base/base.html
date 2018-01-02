@@ -35,7 +35,7 @@
     <header class="main-header">
    
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="{% url 'movies:index' %}" class="logo">
             <span class="logo-mini"><b>AD</b></span>
             <span class="logo-lg"><b>ADMINISTRACIÓN</b></span>
         </a>
@@ -124,7 +124,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="treeview">
-                    <a href="#">
+                    <a href="{% url 'movies:index' %}">
                         <i class="fa fa-laptop"></i>
                         <span>Inicio</span>
                     </a>
@@ -133,14 +133,85 @@
                 
 
                 <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>USUARIOS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                 <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>SUBSCRIPCIONES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+
+                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-newspaper-o"></i><span>NOTICIAS</span>
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>CATEGORIAS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="{% url 'movies:categoria_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>ACTORES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="{% url 'movies:actor_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                 <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>PELICULAS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="{% url 'movies:movie_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-newspaper-o"></i><span>SERIES</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
 
                         <li>
-                            <a href="#"><i class="fa fa-folder-open"></i> Categorias Noticias
+                            <a href="#"><i class="fa fa-folder-open"></i> Series
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -152,20 +223,20 @@
                         </li>
 
                          <li>
-                            <a href="#"><i class="fa fa-newspaper-o"></i> Noticias
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Temporadas
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
                                 
                              
                             </ul>
                         </li>
 
                          <li>
-                            <a href="#"><i class="fa fa-newspaper-o"></i> Comentarios
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Capitulos
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                            <ul class="treeview-menu">
@@ -178,9 +249,45 @@
                              
                             </ul>
                         </li>
-                     </ul>
+                        
+                    </ul>
                 </li>
 
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-newspaper-o"></i><span>SERVIDORES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li>
+                            <a href="#"><i class="fa fa-folder-open"></i> Servidores
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Idioma
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                          <li><a href="{% url 'servers:idioma_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                                
+                             
+                            </ul>
+                        </li>
+
+                        
+                    </ul>
+                </li>
 
 
 

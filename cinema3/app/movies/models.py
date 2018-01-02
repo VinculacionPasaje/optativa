@@ -1,5 +1,5 @@
 from django.db import models
-from app.servers.models import Server
+
 
 # Create your models here.
 
@@ -39,7 +39,6 @@ class Movie(models.Model):
     path = models.ImageField(upload_to = 'imagenes/');
     director = models.CharField(max_length=500);
     categories_id = models.ForeignKey(Categorie, null=False, blank=True, on_delete=models.CASCADE);
-    servers_id = models.ForeignKey(Server, null=True, blank=True, on_delete=models.CASCADE);
     actors = models.ManyToManyField(Actor, through='Actor_Movie');
     state = models.CharField(max_length=1, default='1', editable=False);
     
