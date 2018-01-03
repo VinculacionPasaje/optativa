@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from app.movies.forms import CategoriaForm, ActorForm, MovieForm
 from django.contrib import messages
 from django.db import connection
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
@@ -43,16 +44,48 @@ def actor_create(request):
 
 def movie_create(request):
     if request.method=='POST':
-        valores = request.POST.getlist('actors')
-        print(valores)
+        
 
-        form= MovieForm(request.POST)
+        form= MovieForm(request.POST, request.FILES)
+       
+      
+      
         if form.is_valid():
+            
             #el form.save() guarda los datos del formulario pero para guardar con stored procedure se utiliza el cursor
             #form.save()
+            foto = request.FILES['path']  #obtengo la imagen
+            nombre_imagen=  foto.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
+      
+            fs = FileSystemStorage()
+            filename = fs.save(foto.name, foto) # me guarda la foto en el server
+            uploaded_file_url = fs.url(filename) # me da la ruta del archivo -> /media/imagen.jpg
+            
+          
             cursor = connection.cursor()
-            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],request.POST['path'],request.POST['director'],request.POST['categories_id'],request.POST['actors'],))
+            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],))
             cursor.close()
+
+            cursor2 = connection.cursor()
+            cursor2.execute("BEGIN")
+            cursor2.callproc("SELECT_ID_MOVIE", [request.POST['name'],request.POST['year']])
+            id_movies = cursor2.fetchall()
+            cursor2.execute("COMMIT")
+            cursor2.execute("END")
+            cursor2.close()
+
+
+            for item in id_movies:
+                id_movie = item
+            
+            actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
+            cursor3 = connection.cursor()
+            for actor in actores:
+                cursor3.callproc("insert_movie_actor", (id_movie,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
+            
+            
+            cursor3.close()
+
             messages.success(request, 'Pelicula agregado correctamente!')
         else:
             messages.error(request, 'ah ocurrido un error') 

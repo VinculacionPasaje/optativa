@@ -24,7 +24,7 @@ class CategoriaForm(forms.ModelForm):
 
 class ActorForm(forms.ModelForm):
     
-    birthdate = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'), attrs={'class':'form-control', 'placeholder':'Seleccione fecha de nacimiento'}))
+    birthdate = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'class':'form-control', 'placeholder':'Seleccione fecha de nacimiento'}))
 
     class Meta:
         model= Actor
@@ -50,8 +50,9 @@ class ActorForm(forms.ModelForm):
         }
 
 class MovieForm(forms.ModelForm):
+    path = forms.ImageField();
     
-    duration = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    
 
     class Meta:
         model= Movie
@@ -85,6 +86,7 @@ class MovieForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el titulo de la pelicula'}),
             'year': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el año de lanzamiento'}),
              'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la sipnosis'}),
+             'duration': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la duracion'}),
              'productora': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el productor de la pelicula'}),
              'director': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el director de la pelicula'}),
              'categories': forms.Select(attrs={'class': 'form-control'}),

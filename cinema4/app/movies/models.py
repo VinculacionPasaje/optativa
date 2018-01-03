@@ -32,9 +32,9 @@ class Categorie(models.Model):
 
 class Movie(models.Model):
     name = models.CharField(max_length=500);
-    year = models.IntegerField();
+    year = models.CharField(max_length=5);
     description = models.CharField(max_length=500);
-    duration = models.TimeField();
+    duration = models.CharField(max_length=500);
     productora = models.CharField(max_length=500);
     path = models.ImageField(upload_to = 'imagenes/');
     director = models.CharField(max_length=500);
