@@ -168,7 +168,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="{% url 'movies:categoria_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
                           <li><a href="{% url 'movies:categoria_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
                     
@@ -261,7 +261,19 @@
                     <ul class="treeview-menu">
 
                         <li>
-                            <a href="#"><i class="fa fa-folder-open"></i> Servidores
+                            <a href="#"><i class="fa fa-folder-open"></i> Servidores Peliculas
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="{% url 'servers:server_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-folder-open"></i> Servidores Series
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -271,6 +283,7 @@
                              
                             </ul>
                         </li>
+
 
                          <li>
                             <a href="#"><i class="fa fa-newspaper-o"></i> Idioma
@@ -340,6 +353,14 @@
             });
         });
         </script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".aprobado").fadeOut(300);
+            },3000);
+        });
+    </script>
  
 
 

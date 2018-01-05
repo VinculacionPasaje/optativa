@@ -3,6 +3,10 @@ from app.movies.forms import CategoriaForm, ActorForm, MovieForm
 from django.contrib import messages
 from django.db import connection
 from django.core.files.storage import FileSystemStorage
+import cx_Oracle 
+from PIL import Image
+from app.movies.models import Categorie, Actor, Movie
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def index(request):
@@ -54,6 +58,7 @@ def movie_create(request):
             
             #el form.save() guarda los datos del formulario pero para guardar con stored procedure se utiliza el cursor
             #form.save()
+            
             foto = request.FILES['path']  #obtengo la imagen
             nombre_imagen=  foto.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
       
@@ -61,27 +66,28 @@ def movie_create(request):
             filename = fs.save(foto.name, foto) # me guarda la foto en el server
             uploaded_file_url = fs.url(filename) # me da la ruta del archivo -> /media/imagen.jpg
             
+            nameimg =foto.name
+            path= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
+            imagpath = path+nameimg
+            imag = Image.open (imagpath,mode='r')
+            imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
+            
           
             cursor = connection.cursor()
             cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],))
             cursor.close()
 
             cursor2 = connection.cursor()
-            cursor2.execute("BEGIN")
-            cursor2.callproc("SELECT_ID_MOVIE", [request.POST['name'],request.POST['year']])
-            id_movies = cursor2.fetchall()
-            cursor2.execute("COMMIT")
-            cursor2.execute("END")
+            result = cursor2.callfunc('SELECT_ID_MOVIE', cx_Oracle.NUMBER, [request.POST['name'],request.POST['year']] )
             cursor2.close()
 
 
-            for item in id_movies:
-                id_movie = item
+            
             
             actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
             cursor3 = connection.cursor()
             for actor in actores:
-                cursor3.callproc("insert_movie_actor", (id_movie,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
+                cursor3.callproc("insert_movie_actor", (result,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
             
             
             cursor3.close()
@@ -93,5 +99,20 @@ def movie_create(request):
     else:
         form= MovieForm()
     return render(request, 'movies/movie_form.html', {'form': form})
+
+def categoria_listar(request):
+    categoria= Categorie.objects.all().filter(state=1);
+    page = request.GET.get('page', 1)
+    paginator = Paginator(categoria, 3)
+    try:
+        cat = paginator.page(page)
+    except PageNotAnInteger:
+        cat = paginator.page(1)
+    except EmptyPage:
+        cat = paginator.page(paginator.num_pages)
+    
+    contexto={'categorias': cat}
+    return render(request, 'movies/categorias_listar.html', contexto)
+
 
 
