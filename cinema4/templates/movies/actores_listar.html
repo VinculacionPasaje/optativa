@@ -29,14 +29,14 @@
             <div class="box">
                 <div class="box-header">
                     <div class= "col-xs-6 col-md-6" aling="center">
-                        <h3 class="box-title">Categorias Registradas</h3>
+                        <h3 class="box-title">Actores Registrados</h3>
 
                     </div>
                     
                      
                 </div>
                 <!-- /.box-header -->
-               {%if categorias %}
+               {%if actores %}
 
                   
 
@@ -46,18 +46,22 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Categoria</th>
+                                    <th>Nombre</th>
+                                     <th>Apellido</th>
+                                      <th>Fecha Nacimiento</th>
                                     
                                     <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for categ in categorias %}
+                                {% for actor in actores %}
                                     
-                                    <tr data-id="{{categ.0}}">
+                                    <tr data-id="{{actor.0}}">
                                         
-                                        <td width="130px">{{ categ.0 }}</td>
-                                        <td width="500px">{{categ.1}}</td>
+                                        <td width="130px">{{ actor.0 }}</td>
+                                        <td width="300px">{{actor.1}}</td>
+                                        <td width="300px">{{actor.2}}</td>
+                                        <td width="300px">{{actor.3}}</td>
                                        
                                       
                                        
@@ -71,22 +75,22 @@
                                {% endfor %}
                              <tbody>
                             </table>
-                           {% if categorias.has_other_pages %}
+                           {% if actores.has_other_pages %}
                             <ul class="pagination">
-                                {% if categorias.has_previous %}
-                                <li><a href="?page={{ categorias.previous_page_number }}">&laquo;</a></li>
+                                {% if actores.has_previous %}
+                                <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
                                 {% else %}
                                 <li class="disabled"><span>&laquo;</span></li>
                                 {% endif %}
-                                {% for i in categorias.paginator.page_range %}
-                                {% if categorias.number == i %}
+                                {% for i in actores.paginator.page_range %}
+                                {% if actores.number == i %}
                                     <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                                 {% else %}
                                     <li><a href="?page={{ i }}">{{ i }}</a></li>
                                 {% endif %}
                                 {% endfor %}
-                                {% if categorias.has_next %}
-                                <li><a href="?page={{ categorias.next_page_number }}">&raquo;</a></li>
+                                {% if actores.has_next %}
+                                <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
                                 {% else %}
                                 <li class="disabled"><span>&raquo;</span></li>
                                 {% endif %}
@@ -107,4 +111,3 @@
     </div>
 
 {%endblock%}
-

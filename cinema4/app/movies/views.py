@@ -101,7 +101,27 @@ def movie_create(request):
     return render(request, 'movies/movie_form.html', {'form': form})
 
 def categoria_listar(request):
-    categoria= Categorie.objects.all().filter(state=1);
+    djangoCursor = connection.cursor()
+    cursor = djangoCursor.connection.cursor()
+
+    #cursor = connection.cursor()
+    #cursor.execute("select * from CATEGORIES where state=1")
+    #categoria = cursor.fetchall()
+
+
+    resultado = cursor.var(cx_Oracle.CURSOR)
+    estado=1
+    cursor.callproc('SELECT_CATEGORIA_ALL', (estado,resultado))
+    categoria= resultado.getvalue().fetchall()
+    cursor.close()
+    
+   
+    
+   
+    
+    #categoria= Categorie.objects.all().filter(state=1);
+    
+ 
     page = request.GET.get('page', 1)
     paginator = Paginator(categoria, 3)
     try:
@@ -112,7 +132,44 @@ def categoria_listar(request):
         cat = paginator.page(paginator.num_pages)
     
     contexto={'categorias': cat}
+    
     return render(request, 'movies/categorias_listar.html', contexto)
+
+
+def actor_listar(request):
+    djangoCursor = connection.cursor()
+    cursor = djangoCursor.connection.cursor()
+
+    #cursor = connection.cursor()
+    #cursor.execute("select * from CATEGORIES where state=1")
+    #categoria = cursor.fetchall()
+
+    
+    resultado = cursor.var(cx_Oracle.CURSOR)
+    estado=1
+    cursor.callproc('SELECT_ACTORES_ALL', (estado,resultado))
+    actores= resultado.getvalue().fetchall()
+    cursor.close()
+    
+   
+    
+   
+    
+    #categoria= Categorie.objects.all().filter(state=1);
+    
+ 
+    page = request.GET.get('page', 1)
+    paginator = Paginator(actores, 3)
+    try:
+        cat = paginator.page(page)
+    except PageNotAnInteger:
+        cat = paginator.page(1)
+    except EmptyPage:
+        cat = paginator.page(paginator.num_pages)
+    
+    contexto={'actores': cat}
+    
+    return render(request, 'movies/actores_listar.html', contexto)
 
 
 

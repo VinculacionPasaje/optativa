@@ -29,14 +29,14 @@
             <div class="box">
                 <div class="box-header">
                     <div class= "col-xs-6 col-md-6" aling="center">
-                        <h3 class="box-title">Categorias Registradas</h3>
+                        <h3 class="box-title">Idiomas Registrados</h3>
 
                     </div>
                     
                      
                 </div>
                 <!-- /.box-header -->
-               {%if categorias %}
+               {%if idiomas %}
 
                   
 
@@ -46,18 +46,18 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Categoria</th>
+                                    <th>Idioma</th>
                                     
                                     <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for categ in categorias %}
+                                {% for idioma in idiomas %}
                                     
-                                    <tr data-id="{{categ.0}}">
+                                    <tr data-id="{{idioma.0}}">
                                         
-                                        <td width="130px">{{ categ.0 }}</td>
-                                        <td width="500px">{{categ.1}}</td>
+                                        <td width="130px">{{ idioma.0 }}</td>
+                                        <td width="500px">{{idioma.1}}</td>
                                        
                                       
                                        
@@ -71,22 +71,22 @@
                                {% endfor %}
                              <tbody>
                             </table>
-                           {% if categorias.has_other_pages %}
+                           {% if idiomas.has_other_pages %}
                             <ul class="pagination">
-                                {% if categorias.has_previous %}
-                                <li><a href="?page={{ categorias.previous_page_number }}">&laquo;</a></li>
+                                {% if idiomas.has_previous %}
+                                <li><a href="?page={{ idiomas.previous_page_number }}">&laquo;</a></li>
                                 {% else %}
                                 <li class="disabled"><span>&laquo;</span></li>
                                 {% endif %}
-                                {% for i in categorias.paginator.page_range %}
-                                {% if categorias.number == i %}
+                                {% for i in idiomas.paginator.page_range %}
+                                {% if idiomas.number == i %}
                                     <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                                 {% else %}
                                     <li><a href="?page={{ i }}">{{ i }}</a></li>
                                 {% endif %}
                                 {% endfor %}
-                                {% if categorias.has_next %}
-                                <li><a href="?page={{ categorias.next_page_number }}">&raquo;</a></li>
+                                {% if idiomas.has_next %}
+                                <li><a href="?page={{ idiomas.next_page_number }}">&raquo;</a></li>
                                 {% else %}
                                 <li class="disabled"><span>&raquo;</span></li>
                                 {% endif %}
@@ -107,4 +107,3 @@
     </div>
 
 {%endblock%}
-
