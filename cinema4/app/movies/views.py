@@ -33,6 +33,7 @@ def actor_create(request):
     if request.method=='POST':
         form= ActorForm(request.POST)
         if form.is_valid():
+            print(request.POST['birthdate'])
             #el form.save() guarda los datos del formulario pero para guardar con stored procedure se utiliza el cursor
             #form.save()
             cursor = connection.cursor()
@@ -170,6 +171,83 @@ def actor_listar(request):
     contexto={'actores': cat}
     
     return render(request, 'movies/actores_listar.html', contexto)
+
+def movie_listar(request):
+    djangoCursor = connection.cursor()
+    cursor = djangoCursor.connection.cursor()
+
+    #cursor = connection.cursor()
+    #cursor.execute("select * from CATEGORIES where state=1")
+    #categoria = cursor.fetchall()
+
+    
+    resultado = cursor.var(cx_Oracle.CURSOR)
+    estado=1
+    cursor.callproc('SELECT_MOVIES_ALL', (estado,resultado))
+    movies= resultado.getvalue().fetchall()
+    
+    cursor.close()
+    
+   
+    
+   
+    
+    #categoria= Categorie.objects.all().filter(state=1);
+    
+ 
+    page = request.GET.get('page', 1)
+    paginator = Paginator(movies, 3)
+    try:
+        cat = paginator.page(page)
+    except PageNotAnInteger:
+        cat = paginator.page(1)
+    except EmptyPage:
+        cat = paginator.page(paginator.num_pages)
+    
+    contexto={'movies': cat}
+    
+    return render(request, 'movies/movies_listar.html', contexto)
+
+def categoria_edit(request, id_categoria):
+    categoria= Categorie.objects.get(id=id_categoria)
+    
+    if request.method=='GET':
+        form= CategoriaForm(instance=categoria)
+        
+      
+    else:
+        form= CategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            #form.save()
+            cursor = connection.cursor()
+            cursor.callproc("UPDATE_CATEGORIA_MOVIE", (id_categoria, request.POST['categorie'],))
+            cursor.close()
+            messages.success(request, 'Categoria modificado correctamente!')
+        else:
+            messages.error(request, 'ah ocurrido un error') 
+        return redirect('movies:categoria_listar')
+    return render(request, 'movies/categorias_form.html', {'form': form})
+
+def actor_edit(request, id_actor):
+    actor= Actor.objects.get(id=id_actor)
+    
+    if request.method=='GET':
+        form= ActorForm(instance=actor)
+        
+      
+    else:
+        form= ActorForm(request.POST, instance=actor)
+        if form.is_valid():
+            #form.save()
+            cursor = connection.cursor()
+            cursor.callproc("UPDATE_ACTORES", (id_actor, request.POST['name'],request.POST['last_name'],request.POST['birthdate'],))
+            cursor.close()
+            messages.success(request, 'Actor modificado correctamente!')
+        else:
+            messages.error(request, 'ah ocurrido un error') 
+        return redirect('movies:actor_listar')
+    return render(request, 'movies/actor_form.html', {'form': form})
+
 
 
 

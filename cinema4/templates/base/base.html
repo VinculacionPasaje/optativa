@@ -196,7 +196,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="{% url 'movies:movie_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
                           <li><a href="{% url 'movies:movie_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
                     
@@ -360,6 +360,35 @@
                 $(".aprobado").fadeOut(300);
             },3000);
         });
+    </script>
+
+     
+    
+    <script>
+        $(function() {
+                $.fn.datepicker.dates['en'] = {
+                    days: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
+                    daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+                        "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                        "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                    today: "Hoy",
+                    clear: "Clear",
+                    titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+                    weekStart: 0
+                };
+                $("#datepicker").datepicker({
+                    format: 'dd/mm/yyyy',
+                    language:'en'
+                })
+                $("#datepicker2").datepicker({
+                    format: 'dd/mm/yyyy',
+                    language:'en'
+                })
+            });
+
     </script>
  
 

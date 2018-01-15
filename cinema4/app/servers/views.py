@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 import cx_Oracle 
 from PIL import Image
 from app.movies.models import Categorie, Actor, Movie
+from app.servers.models import Server,Language
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -116,3 +117,44 @@ def server_listar(request):
     contexto={'servers': cat}
     
     return render(request, 'servers/servers_listar.html', contexto)
+
+
+def idioma_edit(request, id_idioma):
+    idioma= Language.objects.get(id=id_idioma)
+    
+    if request.method=='GET':
+        form= LenguajeForm(instance=idioma)
+        
+      
+    else:
+        form= LenguajeForm(request.POST, instance=idioma)
+        if form.is_valid():
+            #form.save()
+            cursor = connection.cursor()
+            cursor.callproc("UPDATE_IDIOMA", (id_idioma, request.POST['language'],))
+            cursor.close()
+            messages.success(request, 'Idioma modificado correctamente!')
+        else:
+            messages.error(request, 'ah ocurrido un error') 
+        return redirect('servers:idioma_listar')
+    return render(request, 'servers/lenguaje_form.html', {'form': form})
+
+def server_edit(request, id_server):
+    server= Server.objects.get(id=id_server)
+    
+    if request.method=='GET':
+        form= ServerForm(instance=server)
+        
+      
+    else:
+        form= ServerForm(request.POST, instance=server)
+        if form.is_valid():
+            #form.save()
+            cursor = connection.cursor()
+            cursor.callproc("UPDATE_SERVER_MOVIE", (id_server, request.POST['name'],request.POST['embed_code'],request.POST['languages'],request.POST['movies'],))
+            cursor.close()
+            messages.success(request, 'Servidor modificado correctamente!')
+        else:
+            messages.error(request, 'ah ocurrido un error') 
+        return redirect('servers:server_listar')
+    return render(request, 'servers/server_form.html', {'form': form})

@@ -24,7 +24,7 @@ class CategoriaForm(forms.ModelForm):
 
 class ActorForm(forms.ModelForm):
     
-    birthdate = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'class':'form-control', 'placeholder':'Seleccione fecha de nacimiento'}))
+    birthdate = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={  'id':'datepicker', 'class':'form-control', 'placeholder':'Seleccione fecha de nacimiento'}))
 
     class Meta:
         model= Actor

@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from app.movies.views import index, categoria_create, actor_create, movie_create, categoria_listar, actor_listar
+from app.movies.views import index, categoria_create, actor_create, movie_create, categoria_listar, actor_listar, movie_listar, categoria_edit, actor_edit
 
 
 urlpatterns = [
@@ -9,5 +9,9 @@ urlpatterns = [
        url(r'^movie/create/$', movie_create, name='movie_crear'),
         url(r'^categoria/listar/$', categoria_listar, name='categoria_listar'),
          url(r'^actor/listar/$', actor_listar, name='actor_listar'),
+          url(r'^movie/listar/$', movie_listar, name='movie_listar'),
+          url(r'^editar/categoria/(?P<id_categoria>\d+)/$', categoria_edit, name='categoria_editar'),
+           url(r'^editar/actor/(?P<id_actor>\d+)/$', actor_edit, name='actor_editar'),
+
     
 ]
