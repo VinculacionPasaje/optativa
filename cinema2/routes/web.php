@@ -14,8 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+        //aqui van todos los url del admin
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('administracion','FrontendController@admin');
+        });
 
-       Route::get('administracion','FrontendController@admin');
+
+      
 
         // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -33,6 +38,9 @@ Route::get('/', function () {
        Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
        Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
        Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+       #perfil y editar perfil
+    Route::get('user/perfil', 'HomeUserController@mi_perfil');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

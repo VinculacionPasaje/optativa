@@ -249,5 +249,88 @@ def actor_edit(request, id_actor):
     return render(request, 'movies/actor_form.html', {'form': form})
 
 
+def movie_edit(request, id_movie):
+    movie= Movie.objects.get(id=id_movie)
+    
+    if request.method=='GET':
+        form= MovieForm(instance=movie)
+        
+      
+    else:
+        form= MovieForm(request.POST, request.FILES, instance=movie)
+        if form.is_valid():
+            #form.save()
+            foto = request.FILES['path']  #obtengo la imagen
+            nombre_imagen=  foto.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
+      
+            fs = FileSystemStorage()
+            filename = fs.save(foto.name, foto) # me guarda la foto en el server
+            uploaded_file_url = fs.url(filename) # me da la ruta del archivo -> /media/imagen.jpg
+            
+            nameimg =foto.name
+            path= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
+            imagpath = path+nameimg
+            imag = Image.open (imagpath,mode='r')
+            imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
+            
+            cursor = connection.cursor()
+            cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],))
+            cursor.close()
+
+            cursor2 = connection.cursor()
+            result = cursor2.callfunc('SELECT_ID_MOVIE', cx_Oracle.NUMBER, [request.POST['name'],request.POST['year']] )
+            cursor2.close()
+
+            actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
+            cursor3 = connection.cursor()
+            for actor in actores:
+                cursor3.callproc("insert_movie_actor", (result,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
+            
+            
+            cursor3.close()
+
+
+            messages.success(request, 'Pelicula modificada correctamente!')
+        else:
+            messages.error(request, 'ah ocurrido un error') 
+        return redirect('movies:movie_listar')
+    return render(request, 'movies/movie_form.html', {'form': form})
+
+def categoria_delete(request, id_categoria):
+    categoria= Categorie.objects.get(id=id_categoria)
+    if request.method=='POST':
+        #mascota.delete()
+        cursor = connection.cursor()
+        cursor.callproc("DELETE_CATEGORIA_MOVIE", (id_categoria,))
+        cursor.close()
+        messages.success(request, 'Categoria eliminada correctamente!')
+        return redirect('movies:categoria_listar')
+    return render(request, 'movies/categoria_delete.html', {'category': categoria})
+
+def actor_delete(request, id_actor):
+    actor= Actor.objects.get(id=id_actor)
+    if request.method=='POST':
+        #mascota.delete()
+        cursor = connection.cursor()
+        cursor.callproc("DELETE_ACTOR", (id_actor,))
+        cursor.close()
+        messages.success(request, 'Actor eliminado correctamente!')
+        return redirect('movies:actor_listar')
+    return render(request, 'movies/actor_delete.html', {'actor': actor})
+
+def movie_delete(request, id_movie):
+    movie= Movie.objects.get(id=id_movie)
+    if request.method=='POST':
+        #mascota.delete()
+        cursor = connection.cursor()
+        cursor.callproc("DELETE_MOVIE", (id_movie,))
+        cursor.close()
+        messages.success(request, 'Pelicula eliminada correctamente!')
+        return redirect('movies:movie_listar')
+    return render(request, 'movies/movie_delete.html', {'movie': movie})
+
+
+
+
 
 

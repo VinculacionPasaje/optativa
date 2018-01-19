@@ -1,86 +1,71 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home Usuario</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{url('frontend/images/ico/ico.ico')}}">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{url('administration/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <title>CinemaTv | Bienvenido</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{url('administration/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('administration/fonts/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('administration/fonts/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/select2/select2.min.css')}}">
+    <link rel="stylesheet" href="{{url('administration/dist/css/AdminLTE.css')}}">
+    <link rel="stylesheet" href="{{url('administration/dist/css/skins/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/iCheck/all.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/morris/morris.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/datepicker/datepicker3.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/timepicker/bootstrap-timepicker.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/daterangepicker/daterangepicker-bs3.css')}}">
+    <link rel="stylesheet" href="{{url('administration/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 
-    <!-- Fonts from Font Awsome -->
+    <link rel="stylesheet" href="{{url('administration/plugins/datatables/dataTables.bootstrap.css')}}">
 
-    <link rel="stylesheet" href="{{url('administration/css/font-awesome.min.css')}}">
-    <!-- CSS Animate -->
-   <link rel="stylesheet" href="{{url('administration/css/animate.css')}}">
-    <!-- Custom styles for this theme -->
-    <link rel="stylesheet" href="{{url('administration/css/main.css')}}">
-
-
-    <!-- ToDos  -->
-    <link rel="stylesheet" href="{{url('administration/plugins/todo/css/todos.css')}}">
-
-    <!-- Morris  -->
-
-    <link rel="stylesheet" href="{{url('administration/plugins/morris/css/morris.css')}}">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <!-- Feature detection -->
-    <script src="{{url('administration/js/modernizr-2.6.2.min.js')}}"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="{{url('administration/dist/css/mensajes.css')}}">
+    <link rel="stylesheet" href="{{url('administration/dist/css/sweetalert.css')}}">
+    <link rel="stylesheet" href="{{url('administration/dist/css/alertify.css')}}">
+    <link rel="shortcut icon" href="{{url('administration/img/favicon.png')}}">
 </head>
+<body class="hold-transition skin-blue sidebar-mini" style="background: #ecf0f5 !important;">
+<div class="wrapper" id="contenido_principal">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{{url('administracion')}}" class="logo">
+            <span class="logo-mini"><b>AD</b></span>
+            <span class="logo-lg"><b>ADMINISTRACIÓN</b></span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Navegación</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
 
-<body>
-    <section id="container">
-        <header id="header">
-            <!--logo start-->
-            <div class="brand">
-                <a href="index.html" class="logo"><span>Space</span>Lab</a>
-            </div>
-            <!--logo end-->
-            <div class="toggle-navigation toggle-left">
-                <button type="button" class="btn btn-default" id="toggle-left" data-toggle="tooltip" data-placement="right" title="Toggle Navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <div class="user-nav">
-                <ul>
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <small class="bg-red">Online</small>
+                            <img src="{{url('fotos/'.Auth::user()->path)}}" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{!! Auth::user()->name.' '.Auth::user()->last_name !!}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
 
-                    <li class="profile-photo">
-                        <img src="assets/img/avatar.png" alt="" class="img-circle">
-                    </li>
-                    <li class="dropdown settings">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                       {!! Auth::user()->name.' '.Auth::user()->last_name !!} <i class="fa fa-angle-down"></i>
-                    </a>
-                        <ul class="dropdown-menu animated fadeInDown">
-                            <li>
-                                <a href="#"><i class="fa fa-user"></i> Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-calendar"></i> Calendar</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge badge-danager" id="user-inbox">5</span></a>
-                            </li>
-                            <li>
+                                <img src="{{url('fotos/'.Auth::user()->path)}}" class="img-circle" alt="User Image">
 
-                              <a href="{{ route('logout') }}"
+                                <p>
+                                    Administrador
+                                </p>
+                            </li>
+
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+
+                                <div class="pull-right">
+                                     <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();"
                                                     class="btn btn-default btn-flat"><i class="fa fa-power-off"></i>
@@ -92,42 +77,7 @@
                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                            {{ csrf_field() }}
                                        </form>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                </ul>
-            </div>
-        </header>
-        <!--sidebar left start-->
-        <aside class="sidebar">
-            <div id="leftside-navigation" class="nano">
-                <ul class="nano-content">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>UI Elements</span><i class="arrow fa fa-angle-right pull-right"></i></a>
-                        <ul>
-
-                            <li><a href="ui-alerts-notifications.html">Alerts &amp; Notifications</a>
-                            </li>
-                            <li><a href="ui-panels.html">Panels</a>
-                            </li>
-                            <li><a href="ui-buttons.html">Buttons</a>
-                            </li>
-                            <li><a href="ui-slider-progress.html">Sliders &amp; Progress</a>
-                            </li>
-                            <li><a href="ui-modals-popups.html">Modals &amp; Popups</a>
-                            </li>
-                            <li><a href="ui-icons.html">Icons</a>
-                            </li>
-                            <li><a href="ui-grid.html">Grid</a>
-                            </li>
-                            <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a>
-                            </li>
-                            <li><a href="ui-nestable-list.html">Nestable Lists</a>
+                                </div>
                             </li>
                         </ul>
                     </li>
@@ -135,28 +85,241 @@
                 </ul>
             </div>
 
-        </aside>
-        <!--sidebar left end-->
-        <!--main content start-->
-        <section class="main-content-wrapper">
-              @yield('title')
-            <section id="main-content">
-              @yield('contenido')
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                <img src="{{url('fotos/'.Auth::user()->path)}}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                <p>{!! Auth::user()->name.' '.Auth::user()->last_name !!}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
 
-            </section>
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="{{url('administracion')}}">
+                        <i class="fa fa-laptop"></i>
+                        <span>Inicio</span>
+                    </a>
+
+                </li>
+                
+
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>
+                        <span>USUARIOS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                 <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-credit-card"></i>
+                        <span>SUBSCRIPCIONES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+
+                 <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-folder-open"></i>
+                        <span>CATEGORIAS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-users"></i>
+                        <span>ACTORES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                 <li class="treeview">
+                    <a href="">
+                        <i class="fa fa-film"></i>
+                        <span>PELICULAS</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                    
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-television"></i><span>SERIES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li>
+                            <a href="#"><i class="fa fa-folder-open"></i> Series
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Temporadas
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                
+                             
+                            </ul>
+                        </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Capitulos
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                           <ul class="treeview-menu">
+
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Aprovados</a></li>
+                                <li><a href="#"><i class="fa fa-list-ul"></i>No Aprobados</a></li>
+                       
+                       
+                                
+                             
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-server"></i><span>SERVIDORES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li>
+                            <a href="#"><i class="fa fa-film"></i> Servidores Peliculas
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-television"></i> Servidores Series
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                             
+                            </ul>
+                        </li>
+
+
+                         <li>
+                            <a href="#"><i class="fa fa-newspaper-o"></i> Idioma
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                       
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                
+                             
+                            </ul>
+                        </li>
+
+                        
+                    </ul>
+                </li>
+
+
+
+                
+            </ul>
         </section>
-        <!--main content end-->
+        <!-- /.sidebar -->
+    </aside>
+    <!--Contenido-->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="background: #ecf0f5 !important;">
+    @yield('title')
+    <!-- Main content -->
+        <section class="content" style="background: #ecf0f5 !important;">
+            @yield('contenido')
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <script src="{{url('administration/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+    <script src="{{url('administration/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('administration/plugins/moment.min.js')}}"></script>
+    <script src="{{url('administration/plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{url('administration/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('administration/plugins/timepicker/bootstrap-timepicker.js')}}"></script>
+    <script src="{{url('administration/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{url('administration/plugins/chartjs/Chart.min.js')}}"></script>
+    <script src="{{url('administration/dist/js/app.min.js')}}"></script>
+    <script src="{{url('administration/dist/js/sweetalert.min.js')}}"></script>
+    <script src="{{url('administration/dist/js/jquery.inputmask.js')}}"></script>
+    <script src="{{url('administration/dist/js/jquery.inputmask.date.extensions.js')}}"></script>
+    <script src="{{url('administration/dist/js/jquery.inputmask.extensions.js')}}"></script>
 
-    </section>
-    <!--Global JS-->
-
-    <script src="{{url('administration/js/jquery-1.10.2.min.js')}}"></script>
-    <script src="{{url('administration/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('administration/plugins/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{url('administration/js/application.js')}}"></script>
-       @yield('script')
+    <script src="{{url('administration/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url('administration/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 
 
+
+
+    @yield('script')
+    </div>
 </body>
-
 </html>

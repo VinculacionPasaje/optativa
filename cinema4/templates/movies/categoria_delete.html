@@ -1,0 +1,48 @@
+{%extends 'base/base.html'%}
+
+
+{%block header%}
+
+<section class="content-header">
+        <h1>Categoria<small>Eliminar</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li class="active">Categoria</li>
+            <li class="active">Eliminar</li>
+        </ol>
+    </section>
+
+
+{%endblock%}
+
+{%block contenido%}
+
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible aprobado" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+
+
+ <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title"> ¿ Desea eliminar el registro de {{category.categorie}} ?</h3>
+        </div><!-- /.box-header holaaaa -->
+        <div class="box-body">
+            <form method="post">
+                {% csrf_token%}
+                  
+                <button type="submit" class="btn btn-danger"> Eliminar </button>
+                <a class="btn btn-default" href="{% url 'movies:categoria_listar' %}"> Cancelar </a>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+{%endblock%}
