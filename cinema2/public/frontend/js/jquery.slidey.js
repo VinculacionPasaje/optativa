@@ -40,6 +40,7 @@
                     }
                     slide.title = ($this.find("p.title").size() > 0) ? $this.find("p.title").first().html() : "";
                     slide.description = ($this.find("p.description").size() > 0) ? $this.find("p.description").first().html() : "";
+					slide.pelicula = ($this.find("p.pelicula").size() > 0) ? $this.find("p.pelicula").first().html() : "";
                     base.slides.push(slide);
                 });
             }
@@ -84,7 +85,7 @@
                 var elements = "<table class='slidey-list-table'><tr>";
                 elements += "<td rowspan='2' class='slidey-list-thumbnail-container'>";
                 elements += "<div class='slidey-list-thumbnail' style='background-image: url(\"" + base.slides[slideIndex].image + "\")'>";
-                elements += "</td><td class='slidey-list-title'>" + base.slides[slideIndex].title + "</td>";
+                elements += "</td><td class='slidey-list-title'>" + "<a href='http://localhost/optativa/cinema2/public/pelicula/"+base.slides[slideIndex].pelicula+"'>"+ base.slides[slideIndex].title + "</a>" +"</td>";
                 elements += "</tr><tr>";
                 elements += "<td class='slidey-list-description'>" + base.slides[slideIndex].description + "</td>";
                 elements += "</tr></table>";
@@ -177,7 +178,7 @@
                     base.layout.$list.find("li").eq(slideIndex).addClass("slidey-active");
                 }
                 base.layout.$image.css("background-image", "url(" + base.slides[slideIndex].image + ")");
-                base.layout.overlay.$title.empty().append(base.slides[slideIndex].title);
+                base.layout.overlay.$title.empty().append("<a href='http://localhost/optativa/cinema2/public/pelicula/"+base.slides[slideIndex].pelicula+"'>"+"Ver Pelicula" + "</a>" );
                 base.layout.overlay.$description.empty().append(base.slides[slideIndex].description);
                 base.layout.$overlay.fadeIn("fast");
                 base.selectNode(slideIndex);

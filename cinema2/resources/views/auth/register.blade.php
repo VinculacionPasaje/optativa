@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
           @if (session('mensaje-registro'))
               @include('mensajes.msj_correcto')
           @endif
@@ -114,6 +114,51 @@
                 </div>
             </div>
         </div>
+
+
+         <div class="col-md-4">
+
+
+          <div style="text-align:center; padding-bottom:25px;">
+
+                        <h2> ¿Ya tienes una cuenta? </h2>
+                        
+
+            </div>
+
+             <div align="center">
+                                <a href="{{ url('/login') }}" style="color:inherit">
+                                
+                                 <button type="button" class="btn-login">
+                                    IDENTIFICARME 
+                                </button>
+
+                                </a>
+
+            </div>
+
+            <div style="text-align:center; padding-bottom:25px; padding-top:25px;">
+
+                        <h2> Registrate ahora para: </h2>
+                        
+
+            </div>
+
+             <div align="justify">
+                    <ul>
+                        <li style="font-size: 20px;"><span>Disfrutar de tus series y películas favoritas.</span></li>
+                        <li style="font-size: 20px;"><span>Ver Peliculas y videos sin anuncios.</span></li>
+                        <li style="font-size: 20px;"><span>Todo el contenido disponible las 24H.</span></li>
+                        <li style="font-size: 20px;"><span>Agregar tus peliculas a favoritos.</span></li>
+                        
+                    </ul>
+
+            </div>
+
+
+
+
+         </div>
     </div>
 </div>
 @endsection

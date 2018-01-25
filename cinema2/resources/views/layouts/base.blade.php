@@ -126,24 +126,7 @@
   				<a href="{{url ('/')}}"><h1>CINEMA<span>TV</span></h1></a>
   			</div>
 
-  			<div class="w3l_sign_in_register">
-  				<ul>
-
-            @if (Route::has('login'))
-                  <div class="top-right links">
-                      @if (Auth::check())
-                          <a href="{{ url('/home') }}">Home</a>
-                      @else
-                          <li><a href="{{ url('/login') }}" >Login</a></li>
-
-                          <li><a href="{{ url('/register') }}">Register</a></li>
-                      @endif
-                  </div>
-              @endif
-
-
-  				</ul>
-  			</div>
+  			
   			<div class="clearfix"> </div>
   		</div>
   	</div>
@@ -241,8 +224,18 @@
    									</li>
    								</ul>
    							</li>
-   							<li><a href="short-codes.html">Short Codes</a></li>
-   							<li><a href="list.html">A - z list</a></li>
+   							@if (Route::has('login'))
+								
+									@if (Auth::check())
+										<li><a href="{{ url('administracion') }}">Mi Perfil</a></li>
+									@else
+									    <li><a href="{{ url('/login') }}">Login</a></li>
+										
+
+										<li><a href="{{ url('/register') }}">Register</a></li>
+									@endif
+								
+							@endif
    						</ul>
    					</nav>
    				</div>

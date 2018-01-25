@@ -3,14 +3,19 @@
 @section('contenido')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+            
+        <div class="col-md-8">
           @if (session('mensaje-registro'))
               @include('mensajes.msj_correcto')
           @endif
+
+         
+
+            
           
             <div class="panel panel-default">
 
-                <div class="modal-header">LOGIN</div>
+                <div class="modal-header">BIENVENIDO A CINEMA TV</div>
 
                 <div class="panel-body">
 
@@ -72,6 +77,48 @@
                     </form>
                 </div>
             </div>
+        </div>
+
+
+        <div class="col-md-4">
+                
+
+            <div style="text-align:center; padding-bottom:25px;">
+
+                        <h2> ¿No tienes una cuenta? </h2>
+                        
+
+            </div>
+
+             <div align="center">
+                                <a href="{{ url('/register') }}" style="color:inherit">
+                                
+                                 <button type="button" class="btn-login">
+                                    REGISTRARME 
+                                </button>
+
+                                </a>
+
+            </div>
+
+
+             <div style="text-align:center; padding-bottom:25px; padding-top:25px;">
+
+                        <h2> ¿Tienes problemas? </h2>
+                        
+
+            </div>
+
+             <div align="center">
+                               <a class="btn btn-link" href="{{ route('password.request') }}">
+                                   ¿ Olvidaste la contraseña?
+                                </a>
+
+            </div>
+
+
+
+                
         </div>
     </div>
 </div>

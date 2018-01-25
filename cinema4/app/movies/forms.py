@@ -67,6 +67,7 @@ class MovieForm(forms.ModelForm):
             'director',
             'categories',
             'actors',
+            'trailer',
            
         ]
 
@@ -80,6 +81,7 @@ class MovieForm(forms.ModelForm):
              'director': 'Director Film',
              'categories': 'Categoria',
              'actors': 'Reparto del Film',
+             'trailer': 'Trailer del Film',
         }
 
         widgets={
@@ -91,6 +93,7 @@ class MovieForm(forms.ModelForm):
              'director': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el director de la pelicula'}),
              'categories': forms.Select(attrs={'class': 'form-control'}),
              'actors': forms.CheckboxSelectMultiple(),
+             'trailer': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el trailer de la pelicula'}),
 
 
         }

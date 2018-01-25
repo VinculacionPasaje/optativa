@@ -63,8 +63,8 @@ input[type="submit"],.agileinfo_chat a,.w3_customer_email_right a,ul.dropdown-me
 	text-decoration: none;
 }
 .panel-default {
-    border-color: #ff8d1b;
-	background: #ffffff;
+    
+	background: #fdfdfd;
 }
 .panel-default > .panel-heading {
     border-color: #FFF;

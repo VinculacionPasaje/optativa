@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+        //Para las vistas principales
+        Route::get('/', 'FrontendController@index');
         //aqui van todos los url del admin
         Route::group(['middleware' => 'admin'], function () {
             Route::get('administracion','FrontendController@admin');

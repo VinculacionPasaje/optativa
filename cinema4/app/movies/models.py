@@ -38,6 +38,7 @@ class Movie(models.Model):
     productora = models.CharField(max_length=500);
     path = models.ImageField(upload_to = 'imagenes/');
     director = models.CharField(max_length=500);
+    trailer = models.CharField(max_length=500, null=True, blank=True);
     categories = models.ForeignKey(Categorie, null=True, blank=True, on_delete=models.CASCADE);
     actors = models.ManyToManyField(Actor);
     state = models.CharField(max_length=1, default='1', editable=False);

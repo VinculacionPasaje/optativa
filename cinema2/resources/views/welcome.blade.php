@@ -32,23 +32,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{url('frontend/js/owl.carousel.js')}}"></script>
 <script src="{{url('frontend/js/move-top.js')}}"></script>
 <script src="{{url('frontend/js/easing.js')}}"></script>
-<script src="{{url('frontend/js/jquery.slidey.js')}}"></script>
-<script src="{{url('frontend/js/jquery.dotdotdot.min.js')}}"></script>
+
 
 <script src="{{url('frontend/js/jquery.magnific-popup.js')}}"></script>
 
 
 
 
- <script type="text/javascript">
-  $("#slidey").slidey({
-    interval: 8000,
-    listCount: 5,
-    autoplay: false,
-    showList: true
-  });
-  $(".slidey-list-description").dotdotdot();
-</script>
+
 
 
 <script>
@@ -103,24 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="{{url ('/')}}"><h1>CINEMA<span>TV</span></h1></a>
 			</div>
 
-			<div class="w3l_sign_in_register">
-				<ul>
-
-          @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <li><a href="{{ url('/login') }}" >Login</a></li>
-
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @endif
-                </div>
-            @endif
-
-
-				</ul>
-			</div>
+					
 			<div class="clearfix"> </div>
 		</div>
 	</div>
@@ -199,82 +173,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="{{url ('/')}}">Home</a></li>
+							<li class="active"><a href="{{url ('/')}}">INICIO</a></li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORIAS <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<li>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown">
-											<li><a href="genres.html">Action</a></li>
-											<li><a href="genres.html">Biography</a></li>
-											<li><a href="genres.html">Crime</a></li>
-											<li><a href="genres.html">Family</a></li>
-											<li><a href="horror.html">Horror</a></li>
-											<li><a href="genres.html">Romance</a></li>
-											<li><a href="genres.html">Sports</a></li>
-											<li><a href="genres.html">War</a></li>
+									         	@if(count($categorias))
+												 
+                                                    @foreach($categorias as $cat)
+
+                                                        <li><a href="{{url('categorias/'.$cat->id)}}">{{$cat->categorie}}</a></li>
+                                                    
+
+
+                                                    @endforeach
+                                                @endif
+										
 										</ul>
 									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<li><a href="genres.html">Adventure</a></li>
-											<li><a href="comedy.html">Comedy</a></li>
-											<li><a href="genres.html">Documentary</a></li>
-											<li><a href="genres.html">Fantasy</a></li>
-											<li><a href="genres.html">Thriller</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<li><a href="genres.html">Animation</a></li>
-											<li><a href="genres.html">Costume</a></li>
-											<li><a href="genres.html">Drama</a></li>
-											<li><a href="genres.html">History</a></li>
-											<li><a href="genres.html">Musical</a></li>
-											<li><a href="genres.html">Psychological</a></li>
-										</ul>
-									</div>
+									
 									<div class="clearfix"></div>
 									</li>
 								</ul>
 							</li>
-							<li><a href="series.html">tv - series</a></li>
-							<li><a href="news.html">news</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
-								<ul class="dropdown-menu multi-column columns-3">
-									<li>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">Asia</a></li>
-												<li><a href="genres.html">France</a></li>
-												<li><a href="genres.html">Taiwan</a></li>
-												<li><a href="genres.html">United States</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">China</a></li>
-												<li><a href="genres.html">HongCong</a></li>
-												<li><a href="genres.html">Japan</a></li>
-												<li><a href="genres.html">Thailand</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="genres.html">Euro</a></li>
-												<li><a href="genres.html">India</a></li>
-												<li><a href="genres.html">Korea</a></li>
-												<li><a href="genres.html">United Kingdom</a></li>
-											</ul>
-										</div>
-										<div class="clearfix"></div>
+							<li><a href="#">SERIES TV</a></li>
+							<li><a href="#">PELICULAS</a></li>
+							
+							@if (Route::has('login'))
+								
+									@if (Auth::check())
+
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">PERFIL <b class="caret"></b></a>
+										<ul class="dropdown-menu multi-column2 columns-3">
+											<li>
+												<div>
+													<ul class="multi-column-dropdown">
+														<li><a href="{{ url('user/perfil') }}">Mi Perfil</a></li>
+														<li><a href="{{ route('logout') }}"
+															onclick="event.preventDefault();
+																		document.getElementById('logout-form').submit();"
+																		class="btn btn-default btn-flat"><i class="fa fa-power-off"></i>
+															Salir
+														</a></li>
+
+
+                      
+														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+															{{ csrf_field() }}
+														</form>
+														
+													</ul>
+												</div>
+												
+												<div class="clearfix"></div>
+											</li>
+										</ul>
 									</li>
-								</ul>
-							</li>
-							<li><a href="short-codes.html">Short Codes</a></li>
-							<li><a href="list.html">A - z list</a></li>
+
+
+									@else
+									    <li><a href="{{ url('/login') }}">Login</a></li>
+										
+
+										<li><a href="{{ url('/register') }}">Register</a></li>
+									@endif
+								
+							@endif
+						
 						</ul>
 					</nav>
 				</div>
@@ -282,20 +250,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 <!-- //nav -->
-<!-- banner
+
 	<div id="slidey" style="display:none;">
 		<ul>
-			<li><img src="images/5.jpg" alt=" "><p class='title'>Tarzan</p><p class='description'> Tarzan, having acclimated to life in London, is called back to his former home in the jungle to investigate the activities at a mining encampment.</p></li>
-			<li><img src="images/2.jpg" alt=" "><p class='title'>Maximum Ride</p><p class='description'>Six children, genetically cross-bred with avian DNA, take flight around the country to discover their origins. Along the way, their mysterious past is ...</p></li>
-			<li><img src="images/3.jpg" alt=" "><p class='title'>Independence</p><p class='description'>The fate of humanity hangs in the balance as the U.S. President and citizens decide if these aliens are to be trusted ...or feared.</p></li>
-			<li><img src="images/4.jpg" alt=" "><p class='title'>Central Intelligence</p><p class='description'>Bullied as a teen for being overweight, Bob Stone (Dwayne Johnson) shows up to his high school reunion looking fit and muscular. Claiming to be on a top-secret ...</p></li>
-			<li><img src="images/6.jpg" alt=" "><p class='title'>Ice Age</p><p class='description'>In the film's epilogue, Scrat keeps struggling to control the alien ship until it crashes on Mars, destroying all life on the planet.</p></li>
-			<li><img src="images/7.jpg" alt=" "><p class='title'>X - Man</p><p class='description'>In 1977, paranormal investigators Ed (Patrick Wilson) and Lorraine Warren come out of a self-imposed sabbatical to travel to Enfield, a borough in north ...</p></li>
+		
+		    @if(count($movies_slider))
+												 
+                    @foreach($movies_slider as $slider)
+					<li><img src="{{url('fotos/'.$slider->path)}}" alt=" "><p class='pelicula'>{{$slider->id}}</p><p class='title'>{{$slider->name}}</p><p class='description'> {{$slider->description}}</p></li>
+
+                                                       
+                                                    
+
+
+                    @endforeach
+            @endif
+			
 		</ul>
   </div>
 
+  <script src="{{url('frontend/js/jquery.slidey.js')}}"></script>
+<script src="{{url('frontend/js/jquery.dotdotdot.min.js')}}"></script>
+ <script type="text/javascript">
+  $("#slidey").slidey({
+    interval: 8000,
+    listCount: 5,
+    autoplay: false,
+    showList: true
+  });
+  $(".slidey-list-description").dotdotdot();
+</script>
 
-banner -->
+
+
 
 
 <!--

@@ -75,7 +75,7 @@ def movie_create(request):
             
           
             cursor = connection.cursor()
-            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],))
+            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],))
             cursor.close()
 
             cursor2 = connection.cursor()
@@ -259,38 +259,61 @@ def movie_edit(request, id_movie):
     else:
         form= MovieForm(request.POST, request.FILES, instance=movie)
         if form.is_valid():
-            #form.save()
-            foto = request.FILES['path']  #obtengo la imagen
-            nombre_imagen=  foto.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
-      
-            fs = FileSystemStorage()
-            filename = fs.save(foto.name, foto) # me guarda la foto en el server
-            uploaded_file_url = fs.url(filename) # me da la ruta del archivo -> /media/imagen.jpg
+            if request.FILES:
+                print("Se eligio una nueva imagen")
+                foto = request.FILES['path']  #obtengo la nombre
             
-            nameimg =foto.name
-            path= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
-            imagpath = path+nameimg
-            imag = Image.open (imagpath,mode='r')
-            imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
-            
-            cursor = connection.cursor()
-            cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],))
-            cursor.close()
+                nombre_imagen=  foto.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
+        
+                fs = FileSystemStorage()
+                filename = fs.save(foto.name, foto) # me guarda la foto en el server
+                uploaded_file_url = fs.url(filename) # me da la ruta del archivo -> /media/imagen.jpg
+                
+                nameimg =foto.name
+                path= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
+                imagpath = path+nameimg
+                imag = Image.open (imagpath,mode='r')
+                imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
+                
+                cursor = connection.cursor()
+                cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],))
+                cursor.close()
 
-            cursor2 = connection.cursor()
-            result = cursor2.callfunc('SELECT_ID_MOVIE', cx_Oracle.NUMBER, [request.POST['name'],request.POST['year']] )
-            cursor2.close()
+                cursor2 = connection.cursor()
+                result = cursor2.callfunc('SELECT_ID_MOVIE', cx_Oracle.NUMBER, [request.POST['name'],request.POST['year']] )
+                cursor2.close()
 
-            actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
-            cursor3 = connection.cursor()
-            for actor in actores:
-                cursor3.callproc("insert_movie_actor", (result,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
-            
-            
-            cursor3.close()
+                actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
+                cursor3 = connection.cursor()
+                for actor in actores:
+                    cursor3.callproc("insert_movie_actor", (result,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
+                
+                
+                cursor3.close()
 
 
-            messages.success(request, 'Pelicula modificada correctamente!')
+                messages.success(request, 'Pelicula modificada correctamente!')
+            else:
+                print("No se actualizó la imagen")
+                cursor = connection.cursor()
+                cursor.callproc("UPDATE_MOVIES2", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],request.POST['director'],request.POST['categories'],request.POST['trailer'],))
+                cursor.close()
+
+                cursor2 = connection.cursor()
+                result = cursor2.callfunc('SELECT_ID_MOVIE', cx_Oracle.NUMBER, [request.POST['name'],request.POST['year']] )
+                cursor2.close()
+
+                actores = request.POST.getlist('actors')  #aqui obtengo todos los id de los actores
+                cursor3 = connection.cursor()
+                for actor in actores:
+                    cursor3.callproc("insert_movie_actor", (result,actor)) #aqui se llena la tabla de mucho a muchos movies_actors
+                
+                
+                cursor3.close()
+
+
+                messages.success(request, 'Pelicula modificada correctamente!')
+   
         else:
             messages.error(request, 'ah ocurrido un error') 
         return redirect('movies:movie_listar')

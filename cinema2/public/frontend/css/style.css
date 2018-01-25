@@ -201,6 +201,23 @@ ul.dropdown-menu.multi-column {
 ul.dropdown-menu.multi-column ul li a:hover{
 	color:#FF8D1B;
 }
+
+
+ul.dropdown-menu.multi-column2 ul li{
+    display:block;
+	margin-bottom:.5em;
+}
+ul.dropdown-menu.multi-column2 ul li a{
+	color:#212121;
+}
+ul.dropdown-menu.multi-column2 {
+    width: 200px;
+    left: 0;
+    padding: 1em;
+}
+ul.dropdown-menu.multi-column2 ul li a:hover{
+	color:#FF8D1B;
+}
 /*-- //nav --*/
 /*-- banner-bottom --*/
 .banner-bottom{
@@ -1147,6 +1164,12 @@ h3.head {
 	ul.dropdown-menu.multi-column {
 		width: 300px;
 	}
+
+	ul.dropdown-menu.multi-column2 {
+		width: 300px;
+	}
+
+
 	h4.latest-text {
 		font-size: 1.7em !important;
 	}
@@ -1206,6 +1229,12 @@ h3.head {
 		background-color: #fff;
 	}
 	ul.dropdown-menu.multi-column {
+		text-align: center;
+		float: none;
+		width: 100%;
+	}
+
+	ul.dropdown-menu.multi-column2 {
 		text-align: center;
 		float: none;
 		width: 100%;
