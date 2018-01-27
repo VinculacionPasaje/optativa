@@ -19,14 +19,17 @@ class FrontendController extends Controller
 
     public function index(){
       $categorias= DB::select("SELECT get_allcategorias(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
+      $movies= DB::select("SELECT get_allmovies(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
       $movies_slider= DB::select("SELECT movies_slider(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
+      $movies_recien_anadidos= DB::select("SELECT movies_recien_anadidos(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
+      $movies_recien_anadidos2= DB::select("SELECT movies_recien_anadidos2(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
 
      
 
       //dd($categorias);
      
        //dd($categorias[0]->id);
-       return view('welcome', compact('categorias', 'movies_slider'));
+       return view('welcome', compact('categorias', 'movies_slider', 'movies_recien_anadidos', 'movies', 'movies_recien_anadidos2'));
    }
 
 

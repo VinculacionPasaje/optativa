@@ -75,7 +75,7 @@ def movie_create(request):
             
           
             cursor = connection.cursor()
-            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],))
+            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
             cursor.close()
 
             cursor2 = connection.cursor()
@@ -238,6 +238,7 @@ def actor_edit(request, id_actor):
     else:
         form= ActorForm(request.POST, instance=actor)
         if form.is_valid():
+            print(request.POST['birthdate'])
             #form.save()
             cursor = connection.cursor()
             cursor.callproc("UPDATE_ACTORES", (id_actor, request.POST['name'],request.POST['last_name'],request.POST['birthdate'],))
@@ -276,7 +277,7 @@ def movie_edit(request, id_movie):
                 imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
                 
                 cursor = connection.cursor()
-                cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],))
+                cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
                 cursor.close()
 
                 cursor2 = connection.cursor()
@@ -295,8 +296,9 @@ def movie_edit(request, id_movie):
                 messages.success(request, 'Pelicula modificada correctamente!')
             else:
                 print("No se actualizó la imagen")
+                print(request.POST['fecha'])
                 cursor = connection.cursor()
-                cursor.callproc("UPDATE_MOVIES2", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],request.POST['director'],request.POST['categories'],request.POST['trailer'],))
+                cursor.callproc("UPDATE_MOVIES2", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
                 cursor.close()
 
                 cursor2 = connection.cursor()

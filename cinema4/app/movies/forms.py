@@ -51,6 +51,7 @@ class ActorForm(forms.ModelForm):
 
 class MovieForm(forms.ModelForm):
     path = forms.ImageField();
+    fecha = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={  'id':'datepicker', 'class':'form-control', 'placeholder':'Seleccione fecha de subida'}))
     
     
 
@@ -68,6 +69,7 @@ class MovieForm(forms.ModelForm):
             'categories',
             'actors',
             'trailer',
+            'fecha',
            
         ]
 
@@ -82,6 +84,7 @@ class MovieForm(forms.ModelForm):
              'categories': 'Categoria',
              'actors': 'Reparto del Film',
              'trailer': 'Trailer del Film',
+             'birthdate': 'Fecha de subida',
         }
 
         widgets={

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sistema | Panel Control</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+
+    <%= stylesheet_link_tag    'bootstrap.min', media: 'all' %>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+        <%= stylesheet_link_tag    'select2.min', media: 'all' %>
+
+    <%= stylesheet_link_tag    'AdminLTE.min', media: 'all' %>
+    <%= stylesheet_link_tag    '_all-skins.min', media: 'all' %>
+    <%= stylesheet_link_tag    'blue', media: 'all' %>
+    <%= stylesheet_link_tag    'jquery-jvectormap-1.2.2', media: 'all' %>
+    <%= stylesheet_link_tag    'datepicker3', media: 'all' %>
+    <%= stylesheet_link_tag    'daterangepicker-bs3', media: 'all' %>
+    <%= stylesheet_link_tag    'bootstrap3-wysihtml5.min', media: 'all' %>
+    <%= stylesheet_link_tag    'dataTables.bootstrap.min', media: 'all' %>
+
+
+ 
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>AD</b></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>ADMINISTRACION</b></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+             
+              <!-- Notifications: style can be found in dropdown.less -->
+              
+              <!-- Tasks: style can be found in dropdown.less -->
+             
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <small class="bg-red">Online</small>
+                  <td>
+                    <%= image_tag 'admin.png' , class:"user-image"  %>
+
+
+                  </td>
+                  <span class="hidden-xs">Administrador</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <p>
+                     Cerrar Sesion
+                    </p>
+                  </li>
+                  <!-- Menu Body -->
+                 
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                  
+                    <div class="pull-right">
+                      <a href="logout" class="btn btn-default btn-flat">Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+             
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <!-- PANEL DE LA FOTO USUARIO -->
+          
+
+          <div class="user-panel">
+            <div class="pull-left image">
+              <%= image_tag 'admin.png' , class:"img-image"  %>
+
+            </div>
+            <div class="pull-left info">
+              <p>Administrador</p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+
+            </div>
+          </div>
+           
+
+           
+          
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="">
+                  <i class="fa fa-laptop"></i>
+                  <span>Inicio</span>
+              </a>
+
+          </li>
+
+            <li class="treeview">
+              <a href="">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>USUARIOS</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                     <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+               
+                    <li>
+                    <a href="#">
+
+                      <i class="fa fa-file"></i> Agregar</a></li>
+              
+              </ul>
+          </li>
+
+           <li class="treeview">
+              <a href="">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>SUBSCRIPCIONES</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                     <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+               
+                    <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+              
+              </ul>
+          </li>
+
+
+           <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>CATEGORIAS</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                     <li><a href="{% url 'movies:categoria_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+               
+                    <li><a href="{% url 'movies:categoria_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+              
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>ACTORES</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                     <li><a href="http://localhost:3000/actors/"><i class="fa fa-list-ul"></i>Listado</a></li>
+               
+                    <li><a href="http://localhost:3000/actors/new"><i class="fa fa-file"></i> Agregar</a></li>
+              
+              </ul>
+          </li>
+
+           <li class="treeview">
+              <a href="">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>PELICULAS</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                     <li><a href="{% url 'movies:movie_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+               
+                    <li><a href="{% url 'movies:movie_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+              
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-newspaper-o"></i><span>SERIES</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+
+                  <li>
+                      <a href="#"><i class="fa fa-folder-open"></i> Series
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                         <li><a href="http://localhost:3000/series"><i class="fa fa-list-ul"></i>Listado</a></li>
+                 
+                          <li><a href="http://localhost:3000/series/new"><i class="fa fa-file"></i> Agregar</a></li>
+                       
+                      </ul>
+                  </li>
+
+                   <li>
+                      <a href="#"><i class="fa fa-newspaper-o"></i> Temporadas
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="http://localhost:3000/seasons"><i class="fa fa-list-ul"></i>Listado</a></li>
+                 
+                    <li><a href="http://localhost:3000/seasons/new"><i class="fa fa-file"></i> Agregar</a></li>
+                          
+                       
+                      </ul>
+                  </li>
+
+                   <li>
+                      <a href="#"><i class="fa fa-newspaper-o"></i> Capitulos
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                     <ul class="treeview-menu">
+
+                          <li><a href="http://localhost:3000/chapters"><i class="fa fa-list-ul"></i>Listado</a></li>
+                          <li><a href="http://localhost:3000/chapters/new"><i class="fa fa-file"></i>Agregar</a></li>
+                 
+                 
+                          
+                       
+                      </ul>
+                  </li>
+                  
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-newspaper-o"></i><span>SERVIDORES</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+
+                  <li>
+                      <a href="#"><i class="fa fa-folder-open"></i> Servidores Peliculas
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                         <li><a href="{% url 'servers:server_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+                 
+                          <li><a href="{% url 'servers:server_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                       
+                      </ul>
+                  </li>
+
+                  <li>
+                      <a href="#"><i class="fa fa-folder-open"></i> Servidores Series
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                         <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                 
+                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                       
+                      </ul>
+                  </li>
+
+
+                   <li>
+                      <a href="#"><i class="fa fa-newspaper-o"></i> Idioma
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="{% url 'servers:idioma_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+                 
+                    <li><a href="{% url 'servers:idioma_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                          
+                       
+                      </ul>
+                  </li>
+
+
+
+
+          </ul>
+          
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!---AKI VA EL TITULO DE CADA PAGINA, LO DESCOMENTE
+        <section class="content-header">
+          <h1>
+            Dashboard
+            <small>Control panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+          </ol>
+        </section>
+        ->
+
+
+
+        <!-- Main content -->
+        <%= yield :encabezado%>
+
+        <section class="content">
+          <!-- Small boxes (Stat box) -->
+          <%= yield %>
+                   
+                  
+
+     
+        </section><!-- /.content -->
+      
+      </div><!-- /.content-wrapper -->
+      
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.3.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <!-- Home tab content -->
+          <div class="tab-pane" id="control-sidebar-home-tab">
+            <h3 class="control-sidebar-heading">Recent Activity</h3>
+            <ul class="control-sidebar-menu">
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                    <p>Will be 23 on April 24th</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-user bg-yellow"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+                    <p>New phone +1(800)555-1234</p>
+                  </div>
+                </a>
+              </li>
+              
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-file-code-o bg-green"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+                    <p>Execution time 5 seconds</p>
+                  </div>
+                </a>
+              </li>
+            </ul><!-- /.control-sidebar-menu -->
+
+            <h3 class="control-sidebar-heading">Tasks Progress</h3>
+            <ul class="control-sidebar-menu">
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Custom Template Design
+                    <span class="label label-danger pull-right">70%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Update Resume
+                    <span class="label label-success pull-right">95%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Laravel Integration
+                    <span class="label label-warning pull-right">50%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Back End Framework
+                    <span class="label label-primary pull-right">68%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                  </div>
+                </a>
+              </li>
+            </ul><!-- /.control-sidebar-menu -->
+
+          </div><!-- /.tab-pane -->
+          <!-- Stats tab content -->
+          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
+          <!-- Settings tab content -->
+          <div class="tab-pane" id="control-sidebar-settings-tab">
+            <form method="post">
+              <h3 class="control-sidebar-heading">General Settings</h3>
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Report panel usage
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Some information about this general settings option
+                </p>
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Allow mail redirect
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Other sets of options are available
+                </p>
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Expose author name in posts
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Allow the user to show his name in blog posts
+                </p>
+              </div><!-- /.form-group -->
+
+              <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Show me as online
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Turn off notifications
+                  <input type="checkbox" class="pull-right">
+                </label>
+              </div><!-- /.form-group -->
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Delete chat history
+                  <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                </label>
+              </div><!-- /.form-group -->
+            </form>
+          </div><!-- /.tab-pane -->
+        </div>
+      </aside><!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.4 -->
+    <%= javascript_include_tag 'jQuery-2.1.4.min', 'data-turbolinks-track': 'reload' %>
+
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
+        <%= yield :script%>
+
+
+     <%= javascript_include_tag 'jquery.dataTables.min', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'dataTables.bootstrap.min', 'data-turbolinks-track': 'reload' %>
+            <%= javascript_include_tag 'select2.full.min', 'data-turbolinks-track': 'reload' %>
+
+
+      <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <!-- Sparkline -->
+    <%= javascript_include_tag 'jquery.sparkline.min', 'data-turbolinks-track': 'reload' %>
+
+    <!-- jvectormap -->
+    <%= javascript_include_tag 'jquery-jvectormap-1.2.2.min', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery-jvectormap-world-mill-en', 'data-turbolinks-track': 'reload' %>
+  
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <%= javascript_include_tag 'daterangepicker', 'data-turbolinks-track': 'reload' %>
+
+    <!-- datepicker -->
+    <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap WYSIHTML5 -->
+    <%= javascript_include_tag 'bootstrap3-wysihtml5.all.min', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Slimscroll -->
+    <%= javascript_include_tag 'jquery.slimscroll.min', 'data-turbolinks-track': 'reload' %>
+    <!-- AdminLTE App -->
+    <%= javascript_include_tag 'app.min', 'data-turbolinks-track': 'reload' %>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <%= javascript_include_tag 'dashboard', 'data-turbolinks-track': 'reload' %>
+
+    <!-- AdminLTE for demo purposes -->
+    <%= javascript_include_tag 'demo', 'data-turbolinks-track': 'reload' %>
+
+
+   
+
+
+  </body>
+</html>

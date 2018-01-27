@@ -49,7 +49,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
 /*-- header --*/
 .header {
     padding: 1em 0;
-	border-top: 3px solid #FF8D1B;
+	border-top: 3px solid #6f0000;
 }
 .w3layouts_logo{
 	float:left;
@@ -66,7 +66,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
     font-weight: 900;
 }
 .w3layouts_logo a h1 span{
-	color: #FF8D1B;
+	color: #6f0000;
     font-size: .3em;
     display: block;
     font-weight: 300;
@@ -105,7 +105,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
     border-bottom-right-radius: 25px;
 }
 .w3_search input[type="submit"]:hover{
-	background:#FF8D1B;
+	background:#6f0000;
 }
 .w3l_sign_in_register{
 	float: right;
@@ -117,7 +117,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
-    background: #FF8D1B;
+    background: #6f0000;
     text-align: center;
     padding: 6px 30px;
     font-weight: bold;
@@ -160,7 +160,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
     padding: 0;
 }
 .movies_nav {
-    background: #FF8D1B;
+    background: #6f0000;
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;
@@ -168,7 +168,7 @@ input[type="submit"],.agileinfo_chat a,.w3ls_footer_grid1_left p a,.w3l_sign_in_
 }
 .navbar-nav > li {
     float: left;
-    border-right: 1px dotted #fff;
+		font-weight: bold;
     width:14.27%;
     text-align: center;
 }
@@ -199,7 +199,7 @@ ul.dropdown-menu.multi-column {
     padding: 1em;
 }
 ul.dropdown-menu.multi-column ul li a:hover{
-	color:#FF8D1B;
+	color:#6f0000;
 }
 
 
@@ -216,7 +216,7 @@ ul.dropdown-menu.multi-column2 {
     padding: 1em;
 }
 ul.dropdown-menu.multi-column2 ul li a:hover{
-	color:#FF8D1B;
+	color:#6f0000;
 }
 /*-- //nav --*/
 /*-- banner-bottom --*/
@@ -225,7 +225,7 @@ ul.dropdown-menu.multi-column2 ul li a:hover{
 }
 .w3_agile_banner_bottom_grid{
 	padding:2em 1em;
-	box-shadow:0px 0px 1px #999;
+	
 }
 .w3l-movie-gride-agile1 {
     margin: 0 !important;
@@ -255,7 +255,7 @@ a.w3_play_icon span,a.w3_play_icon1 span,a.w3_play_icon2 span {
     top: 36%;
 }
 .agile_tv_series_grid_right{
-	background:#FF8D1B;
+	background:#6f0000;
 	min-height:312px;
 	padding:3em 3em 0;
 	width: 48.6%;
@@ -411,7 +411,7 @@ p.fexi_header_para1 a i {
 }
 .w3ls_footer_grid_left1 h2{
 	font-size: 2em;
-    color:#FF8D1B;
+    color:#6f0000;
 	text-transform:uppercase;
     font-style: normal;
 	margin-bottom:.5em;
@@ -433,7 +433,7 @@ p.fexi_header_para1 a i {
 .w3ls_footer_grid_left1_pos input[type="submit"]{
 	outline: none;
     width: 25%;
-    background:#FF8D1B;
+    background:#6f0000;
 	font-size:14px;
 	text-transform:uppercase;
 	color:#fff;
@@ -461,7 +461,7 @@ p.fexi_header_para1 a i {
 	text-decoration:none;
 }
 .w3ls_footer_grid1_left p a:hover{
-	color:#FF8D1B;
+	color:#6f0000;
 }
 .w3ls_footer_grid1_right ul li{
 	display:inline-block;
@@ -473,7 +473,7 @@ p.fexi_header_para1 a i {
 	text-transform:uppercase;
 }
 .w3ls_footer_grid1_right ul li a:hover{
-	color:#FF8D1B;
+	color:#6f0000;
 }
 .w3ls_footer_grid_right a{
 	display: block;
@@ -491,7 +491,7 @@ p.fexi_header_para1 a i {
     padding-bottom: .3em;
 }
 .w3ls_footer_grid_right a h2 span{
-	color: #FF8D1B;
+	color: #6f0000;
     font-size: .3em;
     display: block;
     font-weight: 300;
@@ -532,7 +532,7 @@ p.fexi_header_para1 a i {
     background: #ffffff;
     max-width: 400px;
     width: 100%;
-    border-top: 5px solid #FF8D1B;
+    border-top: 5px solid #6f0000;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
     margin:1em auto;
 }
@@ -541,7 +541,7 @@ p.fexi_header_para1 a i {
   position: absolute;
   top: -0;
   right: -0;
-  background:#FF8D1B;
+  background:##6f0000;
   width: 30px;
   height: 30px;
   margin: -5px 0 0;
@@ -619,7 +619,7 @@ p.fexi_header_para1 a i {
 	outline:none;
 }
 .form-module input[type="submit"]:hover {
-  background:#FF8D1B;
+  background:#6f0000;
 }
 .form-module .cta {
 	background: #343434;
@@ -962,7 +962,7 @@ h2.typoh2{
 }
 h3.icon-subheading {
 	font-size: 28px;
-    color: #ff8d1b !important;
+    color: #6f0000 !important;
     margin: 30px 0 15px;
 }
 h3.agileits-icons-title {
@@ -1017,7 +1017,7 @@ h3.agileits-icons-title {
 h3.head {
     text-align: center;
     font-size: 2.5em;
-    color: #ff8d1b;
+    color: #6f0000;
 }
 /*-- to-top --*/
 #toTop {

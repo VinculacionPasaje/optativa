@@ -42,6 +42,7 @@ class Movie(models.Model):
     categories = models.ForeignKey(Categorie, null=True, blank=True, on_delete=models.CASCADE);
     actors = models.ManyToManyField(Actor);
     state = models.CharField(max_length=1, default='1', editable=False);
+    fecha = models.DateField(null=True, blank=True,);
     
 
     def __str__(self):

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 2018-01-21
+  description: MyString
+  path: MyString
+  director: MyString
+  productora: MyString
+  categories_id: MyString
+  state: MyString
+
+two:
+  year: 2018-01-21
+  description: MyString
+  path: MyString
+  director: MyString
+  productora: MyString
+  categories_id: MyString
+  state: MyString

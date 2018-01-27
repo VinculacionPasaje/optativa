@@ -1,0 +1,68 @@
+ <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Listado de Capitulos</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+
+                <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                  <% @chapters.each do |chapter| %>
+
+                <tr>
+                  <td><%= chapter.id %></td>
+                  <td><%= chapter.name %></td>
+                  <td><%= link_to "Editar", edit_chapter_path(chapter), class: "btn btn-success btn-sm"%></td>
+                 
+                  <td> <%=link_to 'Delete', chapter_path(chapter), data: { confirm: 'Esta seguror de eliminar el registro?' }, class: "btn btn-danger btn-sm"%></td>
+
+
+
+                </tr>
+                <% end %>
+                
+
+                
+                </tbody>
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+
+
+
+ <% content_for :script do %> 
+<script>
+  $(document).ready(function () {
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
+})
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+
+<% end %> 

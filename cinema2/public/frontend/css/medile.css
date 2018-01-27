@@ -27,7 +27,7 @@ body a:hover{
 /*--medile-section--*/
 .w3_agile_banner_bottom_grid {
     padding: 2em 1em;
-    box-shadow: 0px 0px 1px #999;
+   
 }
 .browse-agile-w3ls {
     padding: 2em 0;
@@ -38,10 +38,7 @@ body a:hover{
 .w3l-agile-horror,.general-agileits-w3l,.single-page-agile-main,.wthree-comedy {
    padding:3em 0;
 }
-/*--/tab--*/
-ul#myTab li a {
-  color: #333;
-}
+
 .nav-tabs {
 	border: none;
 }
@@ -60,7 +57,7 @@ ul#myTab {
 	margin-bottom: -1px;
 }
 .nav-tabs > li > a {
-	    background: #f3f1f1;
+	    background: #212121;
     border: none;
     border-radius: 0;
     font-size: 16px;
@@ -77,14 +74,16 @@ ul#myTab {
 	border: none;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	    background-color: #FF8D1B;
+	    background-color: #6f0000;
     border: none;
+    font-weight: bold;
     border-radius: 0;
 	color:#fff!important;
 	}
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-	color: #fff;
-		    background-color: #FF8D1B;
+	color: white;
+    font-weight: bold;
+	background-color: #6f0000;
     border: none;
     border-radius: 0;
 }
@@ -221,7 +220,7 @@ ul.w3l-ratings li,.w3l-ratings a{
     list-style: none;
 }
 ul.w3l-ratings li i ,.w3l-ratings a i{
-    color: #ff8d1b;
+    color: #6f0000;
 }
 /*---browse-grid-----*/
 .w3l-movie-gride-agile {
@@ -253,7 +252,7 @@ i.glyphicon.glyphicon-play-circle {
     top: 3%;
     left: 4%;
     padding: 20px 0 0 0;
-    background: #ff8d1b;
+    background: #6f0000;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -273,7 +272,7 @@ i.glyphicon.glyphicon-play-circle {
     right: 18%;
     width: 0;
     height: 0;
-    border-top: 8px solid #ff8d1b;
+    border-top: 8px solid #6f0000;
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
     transform: rotate(85deg);
@@ -282,10 +281,10 @@ i.glyphicon.glyphicon-play-circle {
 /*--w3l-latest-movies-grids--*/
 .w3_agile_banner_bottom_grid {
     padding: 2em 1em;
-    box-shadow: 0px 0px 1px #999;
+  
 }
 h4.latest-text {
-      border-left: 5px solid #ff8d1b;
+      border-left: 5px solid #6f0000;
     font-size: 2em;
     color: #212121;
     text-transform: uppercase;
