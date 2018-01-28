@@ -234,11 +234,7 @@ ul.dropdown-menu.multi-column2 ul li a:hover{
     width: 82.5% !important;
     margin: 0 auto !important;
 }
-/*-- //banner-bottom --*/
-/*-- general --*/
-.general,.Latest-tv-series,.faq{
-    padding: 3em 0;
-}
+
 .w3_latest_text {
     margin-left: 3em;
 }
@@ -246,6 +242,8 @@ ul.dropdown-menu.multi-column2 ul li a:hover{
 /*-- Latest-tv-series --*/
 .agile_tv_series_grid_left {
     padding: 0;
+	padding-bottom: 25px;
+
 }
 a.w3_play_icon span,a.w3_play_icon1 span,a.w3_play_icon2 span {
     position: absolute;
@@ -254,17 +252,27 @@ a.w3_play_icon span,a.w3_play_icon1 span,a.w3_play_icon2 span {
     left: 42%;
     top: 36%;
 }
+
+table {
+	font-size: 1em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+
 .agile_tv_series_grid_right{
 	background:#6f0000;
 	min-height:312px;
 	padding:3em 3em 0;
-	width: 48.6%;
+	width: 67%;
 }
 p.fexi_header{
 	text-transform: uppercase;
     font-size: 1.3em;
-    color: #212121;
+    color: #fff;
     font-weight: bold;
+	text-align: center;
     padding-bottom: 1em;
 }
 p.fexi_header_para{
@@ -280,7 +288,7 @@ p.fexi_header_para label{
     font-style: normal;
 }
 p.fexi_header_para span{
-	color: #212121;
+	color: #fff;
     font-size: 14px;
     font-weight: bold;
     float: left;
@@ -1047,9 +1055,7 @@ h3.head {
 /*-- //to-top --*/
 /*-----start-responsive-design------*/
 @media (max-width:1280px){
-	h4.latest-text {
-		margin-left: 1em !important;
-	}
+
 }
 @media (max-width:1080px){
 	.w3l_sign_in_register {
@@ -1073,7 +1079,7 @@ h3.head {
 	.agile_tv_series_grid_right {
 		min-height: 258px;
 		padding: 2em 2em 0;
-		width: 48.6%;
+		width: 67%;
 	}
 	p.fexi_header {
 		padding-bottom: .5em;
@@ -1122,9 +1128,7 @@ h3.head {
 	.ribben {
 		left: 13% !important;
 	}
-	.general, .Latest-tv-series, .faq {
-		padding: 2em 0;
-	}
+
 	a.w3_play_icon span, a.w3_play_icon1 span, a.w3_play_icon2 span {
 		left: 49%;
 		top: 42%;
@@ -1552,4 +1556,15 @@ h3.head {
 	h3.head {
 		font-size: 1.8em;
 	}
+}
+
+/* --- Clase que agregaremos cuando el usuario haga scroll --- */
+.menu-fixed {
+	position:fixed;
+	z-index:1000;
+	top:0;
+	/*max-width:1000px;*/
+	width:100%;
+	background: #6f0000;
+	
 }

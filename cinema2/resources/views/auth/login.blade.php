@@ -1,5 +1,35 @@
 @extends('layouts.base')
 
+@section("categoria")
+
+<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORIAS <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+									         	@if(count($categorias))
+												 
+                                                    @foreach($categorias as $cat)
+
+                                                        <li><a href="{{url('categorias/'.$cat->id)}}">{{$cat->categorie}}</a></li>
+                                                    
+
+
+                                                    @endforeach
+                                                @endif
+										
+										</ul>
+									</div>
+									
+									<div class="clearfix"></div>
+									</li>
+								</ul>
+	</li>
+
+
+@endsection
+
 @section('contenido')
 <div class="container">
     <div class="row">

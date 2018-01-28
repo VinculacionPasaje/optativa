@@ -16,6 +16,7 @@
 
         //Para las vistas principales
         Route::get('/', 'FrontendController@index');
+        Route::get('pelicula/{id}', 'FrontendController@peliculas');
         //aqui van todos los url del admin
         Route::group(['middleware' => 'admin'], function () {
             Route::get('administracion','FrontendController@admin');
@@ -42,7 +43,7 @@
        Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
        #perfil y editar perfil
-    Route::get('user/perfil', 'HomeUserController@mi_perfil');
+      Route::get('user/perfil', 'HomeUserController@mi_perfil');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

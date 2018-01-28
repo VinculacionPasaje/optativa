@@ -28,11 +28,21 @@
 <link rel="stylesheet" href="{{url('frontend/css/sweetalert.css')}}">
 <link rel="stylesheet" href="{{url('frontend/css/alertify.css')}}">
 <link rel="shortcut icon" href="{{url('frontend/images/ico/ico.ico')}}">
+
+<link rel="stylesheet" href="{{url('frontend/css/jquery-ui.css')}}">
+
+
+
+
 <!-- flexSlider -->
 <link rel="stylesheet" media="screen" type="text/css"  property="" href="{{url('frontend/css/flexslider.css')}}">
 
-
+ <!-- //here ends scrolling icon -->
+ <script src="{{url('frontend/js/jquery-latest.js')}}"></script>
 <script src="{{url('frontend/js/jquery-2.1.4.min.js')}}"></script>
+
+
+  <script src="{{url('frontend/js/jquery-ui.js')}}"></script>
 <script src="{{url('frontend/js/owl.carousel.js')}}"></script>
 <script src="{{url('frontend/js/move-top.js')}}"></script>
 <script src="{{url('frontend/js/easing.js')}}"></script>
@@ -40,6 +50,7 @@
 <script src="{{url('frontend/js/jquery.dotdotdot.min.js')}}"></script>
 
 <script src="{{url('frontend/js/jquery.magnific-popup.js')}}"></script>
+
 
 
 
@@ -135,7 +146,7 @@
    @yield('header')
 
    <!-- nav -->
-   	<div class="movies_nav">
+   	<div class="movies_nav menu">
    		<div class="container">
    			<nav class="navbar navbar-default">
    				<div class="navbar-header navbar-left">
@@ -150,80 +161,10 @@
    				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
    					<nav>
    						<ul class="nav navbar-nav">
-   							<li class="active"><a href="{{url ('/')}}">Home</a></li>
-   							<li class="dropdown">
-   								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
-   								<ul class="dropdown-menu multi-column columns-3">
-   									<li>
-   									<div class="col-sm-4">
-   										<ul class="multi-column-dropdown">
-   											<li><a href="genres.html">Action</a></li>
-   											<li><a href="genres.html">Biography</a></li>
-   											<li><a href="genres.html">Crime</a></li>
-   											<li><a href="genres.html">Family</a></li>
-   											<li><a href="horror.html">Horror</a></li>
-   											<li><a href="genres.html">Romance</a></li>
-   											<li><a href="genres.html">Sports</a></li>
-   											<li><a href="genres.html">War</a></li>
-   										</ul>
-   									</div>
-   									<div class="col-sm-4">
-   										<ul class="multi-column-dropdown">
-   											<li><a href="genres.html">Adventure</a></li>
-   											<li><a href="comedy.html">Comedy</a></li>
-   											<li><a href="genres.html">Documentary</a></li>
-   											<li><a href="genres.html">Fantasy</a></li>
-   											<li><a href="genres.html">Thriller</a></li>
-   										</ul>
-   									</div>
-   									<div class="col-sm-4">
-   										<ul class="multi-column-dropdown">
-   											<li><a href="genres.html">Animation</a></li>
-   											<li><a href="genres.html">Costume</a></li>
-   											<li><a href="genres.html">Drama</a></li>
-   											<li><a href="genres.html">History</a></li>
-   											<li><a href="genres.html">Musical</a></li>
-   											<li><a href="genres.html">Psychological</a></li>
-   										</ul>
-   									</div>
-   									<div class="clearfix"></div>
-   									</li>
-   								</ul>
-   							</li>
-   							<li><a href="series.html">tv - series</a></li>
-   							<li><a href="news.html">news</a></li>
-   							<li class="dropdown">
-   								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
-   								<ul class="dropdown-menu multi-column columns-3">
-   									<li>
-   										<div class="col-sm-4">
-   											<ul class="multi-column-dropdown">
-   												<li><a href="genres.html">Asia</a></li>
-   												<li><a href="genres.html">France</a></li>
-   												<li><a href="genres.html">Taiwan</a></li>
-   												<li><a href="genres.html">United States</a></li>
-   											</ul>
-   										</div>
-   										<div class="col-sm-4">
-   											<ul class="multi-column-dropdown">
-   												<li><a href="genres.html">China</a></li>
-   												<li><a href="genres.html">HongCong</a></li>
-   												<li><a href="genres.html">Japan</a></li>
-   												<li><a href="genres.html">Thailand</a></li>
-   											</ul>
-   										</div>
-   										<div class="col-sm-4">
-   											<ul class="multi-column-dropdown">
-   												<li><a href="genres.html">Euro</a></li>
-   												<li><a href="genres.html">India</a></li>
-   												<li><a href="genres.html">Korea</a></li>
-   												<li><a href="genres.html">United Kingdom</a></li>
-   											</ul>
-   										</div>
-   										<div class="clearfix"></div>
-   									</li>
-   								</ul>
-   							</li>
+   							<li class="active"><a href="{{url ('/')}}">INICIO</a></li>
+   							 @yield('categoria')
+							<li><a href="#">SERIES TV</a></li>
+							<li><a href="#">PELICULAS</a></li>
    							@if (Route::has('login'))
 								
 									@if (Auth::check())
@@ -347,7 +288,28 @@
 
        });
    </script>
- <!-- //here ends scrolling icon -->
+
+ <script>
+		$(document).ready(function(){
+			var altura = $('.menu').offset().top;
+			
+			$(window).on('scroll', function(){
+				if ( $(window).scrollTop() > altura ){
+					$('.menu').addClass('menu-fixed');
+				} else {
+					$('.menu').removeClass('menu-fixed');
+				}
+			});
+
+		});
+
+</script>
+
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
 
 
 

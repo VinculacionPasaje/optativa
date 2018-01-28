@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use DB;
+use Session;
+use PDO;
 
 class LoginController extends Controller
 {
@@ -19,6 +22,19 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        $categorias= DB::select("SELECT get_allcategorias(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
+
+        return view('auth.login', compact('categorias'));
+    }
+
 
     /**
      * Where to redirect users after login.

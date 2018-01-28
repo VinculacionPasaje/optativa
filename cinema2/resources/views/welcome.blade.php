@@ -27,7 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="shortcut icon" href="{{url('frontend/images/ico/ico.ico')}}">
 
 
-
+<script src="{{url('frontend/js/jquery-latest.js')}}"></script>
 <script src="{{url('frontend/js/jquery-2.1.4.min.js')}}"></script>
 <script src="{{url('frontend/js/owl.carousel.js')}}"></script>
 <script src="{{url('frontend/js/move-top.js')}}"></script>
@@ -158,9 +158,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 <!-- //bootstrap-pop-up -->
 <!-- nav -->
-	<div class="movies_nav">
+	<div class="movies_nav menu">
 		<div class="container">
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default ">
 				<div class="navbar-header navbar-left">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span>
@@ -1160,6 +1160,23 @@ $(document).ready(function(){
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
+	</script>
+
+	
+ 	<script>
+		$(document).ready(function(){
+			var altura = $('.menu').offset().top;
+			
+			$(window).on('scroll', function(){
+				if ( $(window).scrollTop() > altura ){
+					$('.menu').addClass('menu-fixed');
+				} else {
+					$('.menu').removeClass('menu-fixed');
+				}
+			});
+
+		});
+
 	</script>
 <!-- //here ends scrolling icon -->
 </body>

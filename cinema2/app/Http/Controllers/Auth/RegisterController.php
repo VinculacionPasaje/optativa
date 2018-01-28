@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
+use Session;
+use PDO;
 
 class RegisterController extends Controller
 {
@@ -21,6 +24,17 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $categorias= DB::select("SELECT get_allcategorias(1) AS mfrc FROM dual"); //el 1 significa que buscara todas las categorias con estado 1 
+        return view('auth.register', compact('categorias'));
+    }
 
     /**
      * Where to redirect users after registration.
