@@ -50,7 +50,7 @@
                                         <div class="agile_tv_series_grid">
                                             <div class="col-md-8 agile_tv_series_grid_left">
                                                 <div class="w3ls_market_video_grid1">
-                                                    <img src="{{url('fotos/'.$peli->path)}}" alt=" " class="img-responsive" />
+                                                    <img src="{{url('fotos/'.$peli->cover)}}" alt=" " class="img-responsive" />
                                                     <a class="w3_play_icon" href="#small-dialog">
                                                         <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
                                                     </a>
@@ -137,47 +137,74 @@
 
         <h4 class="latest-text w3_latest_text w3_home_popular" style="padding-top: 25px;"> Opciones de Reproducciones</h4>
 
-            <div id="tabs">
-                    <ul>
+                    @if(Auth::guest())
 
-                    @if(count($servers_movies))
-                                                        
-                        @foreach($servers_movies as $servers)
-
-                        @foreach($idiomas as $idioma)
-                                @if($idioma->id== $servers->languages_id)
-
-                                <li><a href="#{{$servers->id}}">{{$servers->name}} - {{$idioma->language}}</a></li>
-                                @endif
-
-                        @endforeach
+                    <div class="alert alert-danger alert-dismissable">
+                        <p style="font-size: 20px;"><strong>! Las opciones de reproducción se encuentrán deshabilitadas ¡</strong> para activarlas deberá iniciar sesión, Hágalo dando click aqui -> <a href="{{ url('/login') }}" class="alert-link">Login</a> 
+                        o creese una cuenta dando click aqui -> <a href="{{ url('/register') }}" class="alert-link">Registrarse</a> </p>
+                    </div>
 
 
-
-                        @endforeach
-
-                    
 
 
                     @endif
 
-                    
+                    @if(Auth::check())
 
-                    </ul>
+                    	@if(Auth::check())
 
-                @if(count($servers_movies))
-                                                    
-                    @foreach($servers_movies as $servers)
-                        <div id="{{$servers->id}}">
+                            <div class="alert alert-success alert-dismissable">
+                                <p style="font-size: 20px;"><strong>! No se está mostrando todas las películas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+                            </div>
 
-                         {!! $servers->embed_code !!}
+
+
+
+                            @endif
+
+                    <div id="tabs">
+                            <ul>
+
+                            @if(count($servers_movies))
+                                                                
+                                @foreach($servers_movies as $servers)
+
+                                @foreach($idiomas as $idioma)
+                                        @if($idioma->id== $servers->languages_id)
+
+                                        <li><a href="#{{$servers->id}}">{{$servers->name}} - {{$idioma->language}}</a></li>
+                                        @endif
+
+                                @endforeach
+
+
+
+                                @endforeach
+
                             
-                        </div>
-                    @endforeach
-                @endif
-            
-            </div>
-          
+
+
+                            @endif
+
+                            
+
+                            </ul>
+
+                        @if(count($servers_movies))
+                                                            
+                            @foreach($servers_movies as $servers)
+                                <div id="{{$servers->id}}">
+
+                                {!! $servers->embed_code !!}
+                                    
+                                </div>
+                            @endforeach
+                        @endif
+                    
+                    </div>
+
+                    @endif
+                
 
 
         </div>

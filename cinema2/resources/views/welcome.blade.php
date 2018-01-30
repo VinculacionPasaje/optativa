@@ -257,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    @if(count($movies_slider))
 												 
                     @foreach($movies_slider as $slider)
-					<li><img src="{{url('fotos/'.$slider->path)}}" alt=" "><p class='pelicula'>{{$slider->id}}</p><p class='title'>{{$slider->name}}</p><p class='description'> {{$slider->description}}</p></li>
+					<li><img src="{{url('fotos/'.$slider->cover)}}" alt=" "><p class='pelicula'>{{$slider->id}}</p><p class='title'>{{$slider->name}}</p><p class='description'> {{$slider->description}}</p></li>
 
                                                        
                                                     
@@ -288,7 +288,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="banner-bottom">
 	    <h4 class="latest-text w3_latest_text">	Películas añadidas recientemente</h4>
+		
 		<div class="container">
+			@if(Auth::guest())
+
+			<div class="alert alert-danger alert-dismissable">
+				<p style="font-size: 20px;"><strong>! Usted no a iniciado sesión ¡</strong> Para disfrutar de todo el contenido primero debe logearse, Hágalo dando click aqui -> <a href="{{ url('/login') }}" class="alert-link">Login</a> 
+				o creese una cuenta dando click aqui -> <a href="{{ url('/register') }}" class="alert-link">Registrarse</a> </p>
+			</div>
+
+			@endif
+
+			@if(Auth::check())
+
+			<div class="alert alert-success alert-dismissable">
+				<p style="font-size: 20px;"><strong>! No se está mostrando todas las películas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+			</div>
+
+
+
+
+			@endif
+
 			<div class="w3_agile_banner_bottom_grid">
 				<div id="owl-demo" class="owl-carousel owl-theme">
 
@@ -336,11 +357,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						@endforeach
 				@endif
 
+				 
+
 
 					
 				
 				</div>
 			</div>
+
+			 <div class="row">
+						<div class="col-xs-12">
+						<center>
+						<a href="#" class="btn btn-primary" role="button">Ver más contenido</a>
+							
+						</center>
+						</div>
+				</div>
+
+
 		</div>
 	</div>
 
@@ -349,7 +383,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-	<div class="general">
+	<div class="banner-bottom" style="padding-bottom: 30px;">
 		<h4 class="latest-text w3_latest_text">Quizá te pueda interesar</h4>
 		<div class="container">
 			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -409,6 +443,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										@endif
 
 										<div class="clearfix"> </div>
+
+											 <div class="row">
+						<div class="col-xs-12">
+						<center>
+						<a href="#" class="btn btn-primary" role="button">Ver más peliculas de {{$cat->categorie}}</a>
+							
+						</center>
+						</div>
+				</div>
 
                                 @endforeach
                             @endif

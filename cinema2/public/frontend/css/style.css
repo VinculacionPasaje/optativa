@@ -221,7 +221,12 @@ ul.dropdown-menu.multi-column2 ul li a:hover{
 /*-- //nav --*/
 /*-- banner-bottom --*/
 .banner-bottom{
-	padding:1em 0;
+	    padding-top: 15px;
+    
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .w3_agile_banner_bottom_grid{
 	padding:2em 1em;

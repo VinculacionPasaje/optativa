@@ -72,10 +72,24 @@ def movie_create(request):
             imagpath = path+nameimg
             imag = Image.open (imagpath,mode='r')
             imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
+
+
+            foto2 = request.FILES['cover']  #obtengo la imagen
+            nombre_imagen2=  foto2.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
+      
+            fs2 = FileSystemStorage()
+            filename2 = fs2.save(foto2.name, foto2) # me guarda la foto en el server
+            uploaded_file_url2 = fs2.url(filename2) # me da la ruta del archivo -> /media/imagen.jpg
+            
+            nameimg2 =foto2.name
+            path2= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
+            imagpath2 = path2+nameimg2
+            imag2 = Image.open (imagpath2,mode='r')
+            imag2.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto2.name)
             
           
             cursor = connection.cursor()
-            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
+            cursor.callproc("insert_movie", (request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],nombre_imagen2,))
             cursor.close()
 
             cursor2 = connection.cursor()
@@ -275,9 +289,23 @@ def movie_edit(request, id_movie):
                 imagpath = path+nameimg
                 imag = Image.open (imagpath,mode='r')
                 imag.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto.name)
+
+
+                foto2 = request.FILES['cover']  #obtengo la imagen
+                nombre_imagen2=  foto2.name # me da el nombre de la imagen por ejemplo -> imagen.jpg
+      
+                fs2 = FileSystemStorage()
+                filename2 = fs2.save(foto2.name, foto2) # me guarda la foto en el server
+                uploaded_file_url2 = fs2.url(filename2) # me da la ruta del archivo -> /media/imagen.jpg
+                
+                nameimg2 =foto2.name
+                path2= 'C:\\xampp\\htdocs\\optativa\\cinema4\\media\\'
+                imagpath2 = path2+nameimg2
+                imag2 = Image.open (imagpath2,mode='r')
+                imag2.save('C:\\xampp\\htdocs\\optativa\\cinema2\\public\\fotos\\'+foto2.name)
                 
                 cursor = connection.cursor()
-                cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
+                cursor.callproc("UPDATE_MOVIES", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],nombre_imagen,request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],nombre_imagen2,))
                 cursor.close()
 
                 cursor2 = connection.cursor()
@@ -297,6 +325,7 @@ def movie_edit(request, id_movie):
             else:
                 print("No se actualizó la imagen")
                 print(request.POST['fecha'])
+                print("trailer es" +request.POST['trailer'])
                 cursor = connection.cursor()
                 cursor.callproc("UPDATE_MOVIES2", (id_movie,request.POST['name'],request.POST['year'],request.POST['description'],request.POST['duration'], request.POST['productora'],request.POST['director'],request.POST['categories'],request.POST['trailer'],request.POST['fecha'],))
                 cursor.close()

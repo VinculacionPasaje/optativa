@@ -165,10 +165,39 @@
    							 @yield('categoria')
 							<li><a href="#">SERIES TV</a></li>
 							<li><a href="#">PELICULAS</a></li>
-   							@if (Route::has('login'))
+   						@if (Route::has('login'))
 								
 									@if (Auth::check())
-										<li><a href="{{ url('administracion') }}">Mi Perfil</a></li>
+
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">PERFIL <b class="caret"></b></a>
+										<ul class="dropdown-menu multi-column2 columns-3">
+											<li>
+												<div>
+													<ul class="multi-column-dropdown">
+														<li><a href="{{ url('user/perfil') }}">Mi Perfil</a></li>
+														<li><a href="{{ route('logout') }}"
+															onclick="event.preventDefault();
+																		document.getElementById('logout-form').submit();"
+																		class="btn btn-default btn-flat"><i class="fa fa-power-off"></i>
+															Salir
+														</a></li>
+
+
+                      
+														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+															{{ csrf_field() }}
+														</form>
+														
+													</ul>
+												</div>
+												
+												<div class="clearfix"></div>
+											</li>
+										</ul>
+									</li>
+
+
 									@else
 									    <li><a href="{{ url('/login') }}">Login</a></li>
 										
