@@ -56,6 +56,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	});
 </script>
+
+<script>
+	$(document).ready(function() {
+		$("#owl-demo2").owlCarousel({
+
+		  autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+		  items : 5,
+		  itemsDesktop : [640,4],
+		  itemsDesktopSmall : [414,3]
+
+		});
+
+	});
+</script>
 <!-- //banner-bottom-plugin -->
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
 <!-- start-smoth-scrolling -->
@@ -368,7 +383,101 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <div class="row">
 						<div class="col-xs-12">
 						<center>
-						<a href="#" class="btn btn-primary" role="button">Ver más contenido</a>
+						<a href="{{url ('peliculas')}}" class="btn btn-primary" role="button">Ver más películas</a>
+							
+						</center>
+						</div>
+				</div>
+
+
+		</div>
+	</div>
+
+
+
+	<div class="banner-bottom">
+	    <h4 class="latest-text w3_latest_text">	Series añadidas recientemente</h4>
+		
+		<div class="container">
+			@if(Auth::guest())
+
+			<div class="alert alert-danger alert-dismissable">
+				<p style="font-size: 20px;"><strong>! Usted no a iniciado sesión ¡</strong> Para disfrutar de todo el contenido primero debe logearse, Hágalo dando click aqui -> <a href="{{ url('/login') }}" class="alert-link">Login</a> 
+				o creese una cuenta dando click aqui -> <a href="{{ url('/register') }}" class="alert-link">Registrarse</a> </p>
+			</div>
+
+			@endif
+
+			@if(Auth::check())
+
+			<div class="alert alert-success alert-dismissable">
+				<p style="font-size: 20px;"><strong>! No se está mostrando todas las series ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+			</div>
+
+
+
+
+			@endif
+
+			<div class="w3_agile_banner_bottom_grid">
+				<div id="owl-demo2" class="owl-carousel owl-theme">
+
+				 @if(count($series_recien_anadidos))
+												 
+						@foreach($series_recien_anadidos as $slider)
+
+						<div class="item">
+									<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+										<a href="{{url ('serie/'.$slider->id)}}" class="hvr-shutter-out-horizontal"><img src="{{url('fotos/'.$slider->path)}}" title="{{$slider->name}}" class="img-responsive" alt=" {{$slider->name}}" />
+											<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+										</a>
+										<div class="mid-1 agileits_w3layouts_mid_1_home">
+											<div class="w3l-movie-text">
+												<h6><a href="{{url ('serie/'.$slider->id)}}">{{$slider->name}}</a></h6>
+											</div>
+											<div class="mid-2 agile_mid_2_home">
+												<p>{{$slider->year}}</p>
+												<div class="block-stars">
+													<ul class="w3l-ratings">
+														<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+													</ul>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+										<div class="ribben">
+											<p>Nuevo</p>
+										</div>
+									</div>
+						</div>
+
+
+
+						
+
+														
+														
+
+
+						@endforeach
+				@endif
+
+				 
+
+
+					
+				
+				</div>
+			</div>
+
+			 <div class="row">
+						<div class="col-xs-12">
+						<center>
+						<a href="{{url ('series')}}" class="btn btn-primary" role="button">Ver más series</a>
 							
 						</center>
 						</div>
@@ -388,8 +497,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 				<ul id="myTab" class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#category" id="category-tab" role="tab" data-toggle="tab" aria-controls="category" aria-expanded="true">Categorias</a></li>
-					<li role="presentation"><a href="#ultimos" role="tab" id="ultimos-tab" data-toggle="tab" aria-controls="ultimos" aria-expanded="false">Últimos Añadidos</a></li>
+					<li role="presentation" class="active"><a href="#category" id="category-tab" role="tab" data-toggle="tab" aria-controls="category" aria-expanded="true">Categorias Peliculas</a></li>
+					<li role="presentation"><a href="#category_series" role="tab" id="category_series-tab" data-toggle="tab" aria-controls="category_series" aria-expanded="false">Categorias Series</a></li>
+				
 					
 				</ul>
 				<div id="myTabContent" class="tab-content">
@@ -459,25 +569,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									
 						
 					</div>
-					
-					
-					<div role="tabpanel" class="tab-pane fade" id="ultimos" aria-labelledby="ultimos-tab">
-							@if(count($movies_recien_anadidos2))
-														
-												@foreach($movies_recien_anadidos2 as $movie)
 
+
+
+						<div role="tabpanel" class="tab-pane fade" id="category_series" aria-labelledby="category_series-tab">
+
+					         @if(count($categorias))
+												 
+                            	 @foreach($categorias as $cat)
+
+								 <p>{{$cat->categorie}}</p>
+
+										@if(count($series))
 														
+												@foreach($series as $serie)
+
+														@if($cat->id == $serie->category_id)
 
 														<div class="col-md-2 w3l-movie-gride-agile">
-															<a href="{{url ('pelicula/'.$movie->id)}}" class="hvr-shutter-out-horizontal"><img src="{{url('fotos/'.$movie->path)}}" title="{{$movie->name}}" class="img-responsive" alt=" {{$movie->name}}" />
+															<a href="{{url ('serie/'.$serie->id)}}" class="hvr-shutter-out-horizontal"><img src="{{url('fotos/'.$serie->path)}}" title="{{$serie->name}}" class="img-responsive" alt=" {{$serie->name}}" />
 																<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 															</a>
 																	<div class="mid-1 agileits_w3layouts_mid_1_home">
 																		<div class="w3l-movie-text">
-																			<h6><a href="{{url ('pelicula/'.$movie->id)}}">{{$movie->name}}</a></h6>
+																			<h6><a href="{{url ('serie/'.$serie->id)}}">{{$serie->name}}</a></h6>
 																		</div>
 																		<div class="mid-2 agile_mid_2_home">
-																			<p>{{$movie->year}}</p>
+																			<p>{{$serie->year}}</p>
 																			<div class="block-stars">
 																				<ul class="w3l-ratings">
 																					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
@@ -494,12 +612,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																		<p>Nuevo</p>
 																	</div>
 														</div>
+											
+														
+
+														@endif
+
 
 												@endforeach
-							@endif
+										@endif
 
-							<div class="clearfix"> </div>
+										<div class="clearfix"> </div>
+
+											 <div class="row">
+										<div class="col-xs-12">
+										<center>
+										<a href="#" class="btn btn-primary" role="button">Ver más series de {{$cat->categorie}}</a>
+											
+										</center>
+										</div>
+								</div>
+
+                                @endforeach
+                            @endif
+						
+									
+						
 					</div>
+
+
+					
 					
 					
 				</div>

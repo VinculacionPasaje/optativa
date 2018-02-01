@@ -51,6 +51,6 @@ class ChaptersController < ApplicationController
 
 	private 
 	def chapter_params
-		params.require(:chapter).permit :name, :season_id
+		params.require(:chapter).permit :name, :season_id, :description, :year, :fecha, :duration
 	end
 end

@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126134346) do
+ActiveRecord::Schema.define(version: 20180129023701) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
-    t.string "lastname"
-    t.string "birthday"
+    t.string "last_name"
+    t.date "birthdate"
     t.string "state"
+  end
+
+  create_table "actors_series", force: :cascade do |t|
+    t.integer "actor_id", limit: 19, precision: 19
+    t.integer "serie_id", limit: 19, precision: 19
+    t.index ["actor_id"], name: "i_actors_series_actor_id"
+    t.index ["serie_id"], name: "i_actors_series_serie_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -26,6 +33,10 @@ ActiveRecord::Schema.define(version: 20180126134346) do
 
   create_table "chapters", force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.date "fecha"
+    t.string "duration"
+    t.integer "year", precision: 38
     t.string "state"
     t.integer "season_id", precision: 38
     t.index ["season_id"], name: "index_chapters_on_season_id"
@@ -42,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180126134346) do
     t.string "description"
     t.date "year"
     t.string "photo"
+    t.string "cover"
+    t.string "coverphoto"
     t.string "state"
     t.integer "serie_id", precision: 38
     t.index ["serie_id"], name: "index_seasons_on_serie_id"
@@ -61,20 +74,21 @@ ActiveRecord::Schema.define(version: 20180126134346) do
     t.index ["category_id"], name: "index_series_on_category_id"
   end
 
-  create_table "servers_chapters", force: :cascade do |t|
+  create_table "serverschapters", force: :cascade do |t|
     t.string "name"
     t.string "embed_code"
-    t.string "quality"
     t.string "state"
-    t.integer "chapter_id", precision: 38
     t.integer "language_id", precision: 38
-    t.index ["chapter_id"], name: "i_servers_chapters_chapter_id"
-    t.index ["language_id"], name: "i_servers_chapters_language_id"
+    t.integer "chapter_id", precision: 38
+    t.index ["chapter_id"], name: "i_serverschapters_chapter_id"
+    t.index ["language_id"], name: "i_serverschapters_language_id"
   end
 
+  add_foreign_key "actors_series", "actors"
+  add_foreign_key "actors_series", "series", column: "serie_id"
   add_foreign_key "chapters", "seasons"
   add_foreign_key "seasons", "series", column: "serie_id"
   add_foreign_key "series", "categories"
-  add_foreign_key "servers_chapters", "chapters"
-  add_foreign_key "servers_chapters", "languages"
+  add_foreign_key "serverschapters", "chapters"
+  add_foreign_key "serverschapters", "languages"
 end

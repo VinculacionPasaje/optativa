@@ -1,0 +1,107 @@
+ <% content_for :encabezado do %> 
+ <section class="content-header">
+          <h1>
+            Servidores de Capitulos
+            <small>Editar</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Servidores de Capitulos</a></li>
+            <li class="active">Editar</li>
+          </ol>
+        </section>
+<% end %> 
+
+ 
+
+<div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <% flash.each do |key, value| %>
+
+            <div class="alert alert-<%= key %> alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= value %></div>
+          <% end %>
+
+       
+
+       
+
+
+
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Servidores de Capitulos</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+
+            <%= form_for(@serverschapter)do |f|%>
+            <div class="box-body">
+              <div class="form-group">
+                <%= f.label :name, 'Nombre'  %>
+                <%= f.text_field :name, :class => "form-control", :placeholder => "Ingrese el nombre" , :required =>'true'  %>
+              </div>
+
+              
+
+              <div class="form-group">
+                <%= f.label :embed_code, 'Codigo Embebido'  %>
+                <%= f.text_field :embed_code, :class => "form-control", :placeholder => "Ingrese lel codigo embebido", :required =>'true'   %>
+              </div>
+
+                           
+              
+              <div class="form-group">
+                <label>Lenguaje</label>
+                <select class="form-control select2" data-placeholder="Seleccione un lenguaje"
+                        style="width: 100%;" name="serverschapter[language_id]" required="true">
+                    <% @languages.each do |language| %>
+                          <option value="<%= language.id%>"><%= language.language %></option>
+
+
+                    <% end %>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Capitulo</label>
+                <select class="form-control select2" data-placeholder="Seleccione un capitulo"
+                        style="width: 100%;" name="serverschapter[chapter_id]" required="true">
+                    <% @chapters.each do |chapter| %>
+                  <option value="<%= chapter.id%>">Capitulo: <%= chapter.name %>=>Temporada: <%= chapter.season.season %>=>Serie: <%= chapter.season.serie.name %></option>
+
+                    <% end %>
+                </select>
+              </div>
+
+              
+
+
+            </div>
+             <div class="box-footer">
+                <%= f.submit 'Editar', :class => "btn btn-primary"  %>
+
+            </div>
+             
+
+            <%end%>
+
+          </div>
+        </div>
+  </div>
+
+   <% content_for :script do %> 
+
+
+  <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+  })
+</script>
+
+<% end %> 

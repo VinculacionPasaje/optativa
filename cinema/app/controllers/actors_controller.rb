@@ -58,6 +58,6 @@ class ActorsController < ApplicationController
 
 	private 
 	def actor_params
-		params.require(:actor).permit :name, :lastname, :birthday
+		params.require(:actor).permit :name, :last_name, :birthdate
 	end
 end

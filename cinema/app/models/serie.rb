@@ -2,11 +2,31 @@ class Serie< ApplicationRecord
 	belongs_to :category
 	has_many :seasons
 
+	has_many :actors_series
+	has_many :actors, through: :actors_series
+	attr_reader :actors
+	def actors=(value)
+		@actors = value
+
+	end
+
+	after_create  :save_actors
+
+	def save_actors
+		@actors.each do |actor_id|
+			ActorsSeries.create(actor_id: actor_id, serie_id: self.id)
+		end
+	end
+
+	def update_actors
+		ActorsSeries.where(serie_id: self.id).delete_all
+	end
+
 	FOTOS = 'C:/xampp/htdocs/optativa/cinema2', 'public', 'fotos'
 	DEFAULT = Rails.root, 'public', 'photo_store'
 
 
-	before_save :default_values
+	before_save :default_values,:update_actors, :save_actors
 	def default_values
 	    self.state ||= '1' 
 

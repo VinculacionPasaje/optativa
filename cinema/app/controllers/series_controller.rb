@@ -8,6 +8,7 @@ class SeriesController < ApplicationController
 	def new
 		@serie = Serie.new
 		@categories= Category.where(:state => '1')
+		@actors= Actor.where(:state => '1')
 	end
 
 	def show
@@ -19,11 +20,15 @@ class SeriesController < ApplicationController
 	def edit
 		@serie = Serie.find(params[:id])
 		@categories= Category.where(:state => '1')
+		@actors= Actor.where(:state => '1')
+		@array = Array.new
 
 	end
 
 	def create
 		@serie = Serie.new serie_params
+		#rails params.to_yaml
+		@serie.actors = params[:actors]
 
 		if @serie.save
 			flash[:success] = "Registro guardado correctamente!"
@@ -39,6 +44,8 @@ class SeriesController < ApplicationController
 
 	def update
 		@serie = Serie.find(params[:id])
+		@serie.actors = params[:actors]
+
 		if @serie.update(serie_params)
 			redirect_to series_path
 		else 
@@ -51,7 +58,7 @@ class SeriesController < ApplicationController
 
 	private 
 	def serie_params
-		params.require(:serie).permit :name, :year, :description, :director, :productora, :photo, :path, :category_id, :trailer
+		params.require(:serie).permit :name, :year, :description, :director, :productora, :photo, :path, :category_id, :trailer, :actors
 	end
 
 

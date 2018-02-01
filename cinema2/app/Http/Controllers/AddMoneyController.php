@@ -7,7 +7,7 @@ use Validator;
 use URL;
 use Session;
 use Redirect;
-use Input;
+use Illuminate\Support\Facades\Input;
 /** All Paypal Details class **/
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;

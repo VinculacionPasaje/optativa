@@ -34,6 +34,14 @@ Rails.application.routes.draw do
   put'/chapters/:id', to: 'chapters#update'
   get '/chapters/:id', to: 'chapters#show', as: 'chapter'
 
+  get '/serverschapters', to: 'serverschapters#index'
+  get '/serverschapters/new', to: 'serverschapters#new'
+  post '/serverschapters', to: 'serverschapters#create'
+  get '/serverschapters/:id/edit', to: 'serverschapters#edit', as: 'edit_serverschapter'
+  patch'/serverschapters/:id', to: 'serverschapters#update'
+  put'/serverschapters/:id', to: 'serverschapters#update'
+  get '/serverschapters/:id', to: 'serverschapters#show', as: 'serverschapter'
+
 
 
 

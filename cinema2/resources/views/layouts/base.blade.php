@@ -163,8 +163,8 @@
    						<ul class="nav navbar-nav">
    							<li class="active"><a href="{{url ('/')}}">INICIO</a></li>
    							 @yield('categoria')
-							<li><a href="#">SERIES TV</a></li>
-							<li><a href="#">PELICULAS</a></li>
+							<li><a href="{{ url('series') }}">SERIES TV</a></li>
+							<li><a href="{{ url('peliculas') }}">PELICULAS</a></li>
    						@if (Route::has('login'))
 								
 									@if (Auth::check())

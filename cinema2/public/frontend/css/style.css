@@ -228,6 +228,24 @@ ul.dropdown-menu.multi-column2 ul li a:hover{
     margin-right: auto;
     margin-left: auto;
 }
+
+.panel-title > a:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f055";
+    padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+    float: right !important;
+    content:"\f056";
+}
+.panel-title > a:hover, 
+.panel-title > a:active, 
+.panel-title > a:focus  {
+    text-decoration:none;
+}
+
+
 .w3_agile_banner_bottom_grid{
 	padding:2em 1em;
 	

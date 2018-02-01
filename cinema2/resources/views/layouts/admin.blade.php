@@ -120,9 +120,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="{{route('usuarios.index')}}"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="{{route('usuarios.create')}}"><i class="fa fa-file"></i> Agregar</a></li>
                     
                     </ul>
                 </li>
@@ -149,9 +149,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="http://127.0.0.1:8000/administracion/categoria/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/categoria/create/"><i class="fa fa-file"></i> Agregar</a></li>
                     
                     </ul>
                 </li>
@@ -163,9 +163,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="http://127.0.0.1:8000/administracion/actor/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/actor/create/"><i class="fa fa-file"></i> Agregar</a></li>
                     
                     </ul>
                 </li>
@@ -177,9 +177,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                           <li><a href="http://127.0.0.1:8000/administracion/movie/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                      
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/movie/create/"><i class="fa fa-file"></i> Agregar</a></li>
                     
                     </ul>
                 </li>
@@ -196,9 +196,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                               <li><a href="http://localhost:3000/series"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                <li><a href="http://localhost:3000/series/new"><i class="fa fa-file"></i> Agregar</a></li>
                              
                             </ul>
                         </li>
@@ -208,9 +208,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                                <li><a href="http://localhost:3000/seasons"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://localhost:3000/seasons/new"><i class="fa fa-file"></i> Agregar</a></li>
                                 
                              
                             </ul>
@@ -222,8 +222,8 @@
                             </a>
                            <ul class="treeview-menu">
 
-                                <li><a href="#"><i class="fa fa-list-ul"></i>Aprovados</a></li>
-                                <li><a href="#"><i class="fa fa-list-ul"></i>No Aprobados</a></li>
+                                <li><a href="http://localhost:3000/chapters"><i class="fa fa-list-ul"></i>Listar</a></li>
+                                <li><a href="http://localhost:3000/chapters/new"><i class="fa fa-list-ul"></i>Agregar</a></li>
                        
                        
                                 
@@ -246,9 +246,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                               <li><a href="http://127.0.0.1:8000/administracion/servers/server/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                <li><a href="http://127.0.0.1:8000/administracion/servers/server/create/"><i class="fa fa-file"></i> Agregar</a></li>
                              
                             </ul>
                         </li>
@@ -258,9 +258,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                               <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                               <li><a href="http://localhost:3000/serverschapters"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                                <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                                <li><a href="http://localhost:3000/serverschapters/new"><i class="fa fa-file"></i> Agregar</a></li>
                              
                             </ul>
                         </li>
@@ -271,9 +271,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                                <li><a href="http://127.0.0.1:8000/administracion/servers/idioma/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                        
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/servers/idioma/create/"><i class="fa fa-file"></i> Agregar</a></li>
                                 
                              
                             </ul>

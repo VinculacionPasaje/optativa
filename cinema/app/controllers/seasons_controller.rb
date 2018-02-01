@@ -51,6 +51,6 @@ class SeasonsController < ApplicationController
 
 	private 
 	def season_params
-		params.require(:season).permit :season, :year, :description,:photo, :path, :serie_id
+		params.require(:season).permit :season, :year, :description,:photo, :path, :serie_id, :cover, :coverphoto
 	end
 end

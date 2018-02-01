@@ -151,7 +151,7 @@
 
                     @if(Auth::check())
 
-                    	@if(Auth::check())
+                    
 
                             <div class="alert alert-success alert-dismissable">
                                 <p style="font-size: 20px;"><strong>! No se está mostrando todas las películas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
@@ -160,7 +160,7 @@
 
 
 
-                            @endif
+                           
 
                     <div id="tabs">
                             <ul>

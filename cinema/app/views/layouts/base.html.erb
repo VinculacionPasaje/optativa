@@ -27,6 +27,10 @@
     <%= stylesheet_link_tag    'bootstrap3-wysihtml5.min', media: 'all' %>
     <%= stylesheet_link_tag    'dataTables.bootstrap.min', media: 'all' %>
 
+            <%= javascript_include_tag 'validaciones', 'data-turbolinks-track': 'reload' %>
+
+
+
 
  
   </head>
@@ -35,7 +39,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="http://localhost/optativa/cinema2/public/administracion" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>AD</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -130,10 +134,10 @@
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                     <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     <li><a href="http://localhost/optativa/cinema2/public/administracion/usuarios"><i class="fa fa-list-ul"></i>Listado</a></li>
                
                     <li>
-                    <a href="#">
+                    <a href="http://localhost/optativa/cinema2/public/administracion/usuarios/create">
 
                       <i class="fa fa-file"></i> Agregar</a></li>
               
@@ -176,9 +180,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                     <li><a href="http://localhost:3000/actors/"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     <li><a href="http://127.0.0.1:8000/administracion/actor/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                
-                    <li><a href="http://localhost:3000/actors/new"><i class="fa fa-file"></i> Agregar</a></li>
+                    <li><a href="http://127.0.0.1:8000/administracion/actor/create/"><i class="fa fa-file"></i> Agregar</a></li>
               
               </ul>
           </li>
@@ -190,9 +194,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                     <li><a href="{% url 'movies:movie_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+                     <li><a href="http://127.0.0.1:8000/administracion/movie/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                
-                    <li><a href="{% url 'movies:movie_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                    <li><a href="http://127.0.0.1:8000/administracion/movie/create/"><i class="fa fa-file"></i> Agregar</a></li>
               
               </ul>
           </li>
@@ -259,9 +263,9 @@
                           <i class="fa fa-angle-left pull-right"></i>
                       </a>
                       <ul class="treeview-menu">
-                         <li><a href="{% url 'servers:server_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+                         <li><a href="http://127.0.0.1:8000/administracion/servers/server/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                  
-                          <li><a href="{% url 'servers:server_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/servers/server/create/"><i class="fa fa-file"></i> Agregar</a></li>
                        
                       </ul>
                   </li>
@@ -271,9 +275,9 @@
                           <i class="fa fa-angle-left pull-right"></i>
                       </a>
                       <ul class="treeview-menu">
-                         <li><a href="#"><i class="fa fa-list-ul"></i>Listado</a></li>
+                         <li><a href="http://localhost:3000/serverschapters"><i class="fa fa-list-ul"></i>Listado</a></li>
                  
-                          <li><a href="#"><i class="fa fa-file"></i> Agregar</a></li>
+                          <li><a href="http://localhost:3000/serverschapters/new" ><i class="fa fa-file"></i> Agregar</a></li>
                        
                       </ul>
                   </li>
@@ -284,9 +288,9 @@
                           <i class="fa fa-angle-left pull-right"></i>
                       </a>
                       <ul class="treeview-menu">
-                          <li><a href="{% url 'servers:idioma_listar' %}"><i class="fa fa-list-ul"></i>Listado</a></li>
+                          <li><a href="http://127.0.0.1:8000/administracion/servers/idioma/listar/"><i class="fa fa-list-ul"></i>Listado</a></li>
                  
-                    <li><a href="{% url 'servers:idioma_crear' %}"><i class="fa fa-file"></i> Agregar</a></li>
+                    <li><a href="http://127.0.0.1:8000/administracion/servers/idioma/create/"><i class="fa fa-file"></i> Agregar</a></li>
                           
                        
                       </ul>
@@ -543,6 +547,7 @@
 
     <!-- AdminLTE for demo purposes -->
     <%= javascript_include_tag 'demo', 'data-turbolinks-track': 'reload' %>
+
 
 
    

@@ -1,0 +1,71 @@
+ <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Listado de Servidores de Capitulos</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+
+                <thead>
+
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Codigo Embebido</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                  <% @serverschapters.each do |serverschapter| %>
+
+                <tr>
+                  <td><%= serverschapter.id %></td>
+                  <td><%= serverschapter.name %></td>
+                  <td><%= serverschapter.embed_code %></td>
+
+                  <td><%= link_to "Editar", edit_serverschapter_path(serverschapter), class: "btn btn-success btn-sm"%></td>
+                 
+                  <td> <%=link_to 'Delete', serverschapter_path(serverschapter), data: { confirm: 'Esta seguror de eliminar el registro?' }, class: "btn btn-danger btn-sm"%></td>
+
+
+
+                </tr>
+                <% end %>
+                
+
+                
+                </tbody>
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+
+
+
+ <% content_for :script do %> 
+<script>
+  $(document).ready(function () {
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
+})
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+
+<% end %> 

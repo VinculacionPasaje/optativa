@@ -42,7 +42,24 @@
             <div class="box-body">
               <div class="form-group">
                 <%= f.label :name, 'Nombre'  %>
-                <%= f.text_field :name, :class => "form-control", :placeholder => "Ingrese el nombre"   %>
+                <%= f.text_field :name, :class => "form-control", :placeholder => "Ingrese el nombre" , :required =>'true'  %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :description, 'Descripcion'  %>
+                <%= f.text_field :description, :class => "form-control", :placeholder => "Ingrese la descripcion", :required =>'true'   %>
+              </div>
+              <div class="form-group">
+                <%= f.label :fecha, 'Fecha'  %>
+                <%= f.date_field :fecha, :class => "form-control" , :required =>'true' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :duration, 'Duracion'  %>
+                <%= f.number_field :duration, :class => "form-control", :placeholder => "Ingrese la duracion", :required =>'true'   %>
+              </div>
+              <div class="form-group">
+                <%= f.label :year, 'Year'  %>
+                <%= f.number_field :year, :class => "form-control", :placeholder => "Ingrese el year" , :required =>'true', :max =>"2099", :min =>"1900"  %>
               </div>
 
                                   
@@ -51,7 +68,7 @@
               <div class="form-group">
                 <label>Series</label>
                 <select class="form-control select2" data-placeholder="Seleccione una temporada"
-                        style="width: 100%;" name="chapter[season_id]">
+                        style="width: 100%;" name="chapter[season_id]" required ='true'>
                     <% @seasons.each do |season| %>
                           <option value="<%= season.id %>"><%= season.season %></option>
 
