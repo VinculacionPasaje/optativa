@@ -76,7 +76,7 @@
                                                     <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                                 </p>
                                             </div>
-                                            <div class="clearfix"> </div>
+                                           
                                             
                                         </div>
                                     </li>
@@ -151,17 +151,12 @@
 
                     
 
-                    	@if(Auth::check())
-
-                            <div class="alert alert-success alert-dismissable">
-                                <p style="font-size: 20px;"><strong>! No se está mostrando todas las temporadas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
-                            </div>
+                @if(Auth::check())
 
 
+                    @if(count($subscription))
 
-                           
-                               
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                                 @if(count($seasons))
 												 
@@ -178,80 +173,150 @@
                                                 </div>
 
 
-                                         @if(count($chapters))
+                                                @if(count($chapters))
 
 
-                                            <div id="{{$season->id}}0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{$season->id}}">
-                                                    <div class="panel-body">
+                                                        <div id="{{$season->id}}0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{$season->id}}">
+                                                                        <div class="panel-body">
 
-                                                    
-												 
-                                                        @foreach($chapters as $chapter)
-
-                                                                @if($season->id==$chapter->season_id)
-
-                                                                
                                                                         
-                                                                        
-                                                                        {{ $chapter->name }}
-                                                                        <br>
+                                                                    
+                                                                            @foreach($chapters as $chapter)
 
-                                                                @endif
+                                                                                    @if($season->id==$chapter->season_id)
+
+                                                                                          <a href="{{url('chapter/'.$chapter->id)}}" style="color: black;"> {{ $chapter->name }}</a>
+                                                                       
+                                                                                            
+                                                                                          
+                                                                                            <br>
+
+                                                                                    @endif
+                                                                                    
+                                                                                    
+                                                                                
+
+
+                                                                            @endforeach
+
                                                                 
-                                                                
-                                                            
+                                                                        </div>
+                                                        </div>
 
+                                        
 
-                                                        @endforeach
+                                                @endif
 
-                                            
-                                                    </div>
-                                            </div>
-
-                                
-
-                                        @endif
+                                                 </div>
 
 
 
                                     @endforeach
 
 
-                                         </div>
+                                        
                                 
 
                                 @endif
 
+                           
 
-                              
-                                    
-                               
-
-
-                                    
-
-
-                                </div>
-                                
+                             </div>
                              
 
+                    @else
+
+                    <div class="alert alert-success alert-dismissable">
+                        <p style="font-size: 20px;"><strong>! No se está mostrando todas las temporadas  ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="{{url('user/perfil/paywithpaypal')}}" class="alert-link">Actualizar a cuenta Premium</a> </p>
+                    </div>
+
+                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                                @if(count($seasons))
+												 
+			                        @foreach($seasons as $season)
+
+                                    <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="{{$season->id}}">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#{{$season->id}}0" aria-expanded="true" aria-controls="{{$season->id}}0">
+                                                       {{$season->season}} 
+                                                        </a>
+                                                    </h4>
+
+                                                </div>
+
+
+                                                @if(count($chapters))
+
+
+                                                        <div id="{{$season->id}}0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{$season->id}}">
+                                                                        <div class="panel-body">
+
+                                                                        
+                                                                    
+                                                                            @foreach($chapters as $chapter)
+
+                                                                                    @if($season->id==$chapter->season_id)
+
+                                                                                          <a href="{{url('chapter/'.$chapter->id)}}" style="color: black;"> {{ $chapter->name }}</a>
+                                                                       
+                                                                                            
+                                                                                          
+                                                                                            <br>
+
+                                                                                    @endif
+                                                                                    
+                                                                                    
+                                                                                
+
+
+                                                                            @endforeach
+
+                                                                
+                                                                        </div>
+                                                        </div>
+
+                                        
+
+                                                @endif
+
+                                                 </div>
 
 
 
+                                    @endforeach
 
 
-                            @endif
+                                        
+                                
+
+                                @endif
+
+                           
+
+                             </div>
+
+
+                    @endif
+
+                                                   
+                               
+                       
+                @endif
 
                
-                    </div>
-                  
-                
+
+
+
+
+      
 
 
         </div>
 
 
-        <div class="col-md-4 single-right">
+            <div class="col-md-4 single-right">
         
 					<h3 align="center">Series Similares</h3>
 
@@ -281,6 +346,10 @@
 				
 				<div class="clearfix"> </div>
         </div>
+
+ 
+
+
 
 
 

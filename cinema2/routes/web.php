@@ -18,6 +18,8 @@
         Route::get('/', 'FrontendController@index');
         Route::get('pelicula/{id}', 'FrontendController@peliculas');
         Route::get('serie/{id}', 'FrontendController@series');
+        Route::get('categorias/{id}', 'FrontendController@category');
+         Route::get('chapter/{id}', 'FrontendController@chapters');
         //aqui van todos los url del admin
         Route::group(['middleware' => 'admin'], function () {
             Route::get('administracion','FrontendController@admin');
@@ -25,6 +27,7 @@
 
         Route::get('peliculas', 'FrontendController@todas_peliculas');
         Route::get('series', 'FrontendController@todas_series');
+
 
 
       
@@ -52,7 +55,9 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+
+
+Route::get('user/perfil/paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
 Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 

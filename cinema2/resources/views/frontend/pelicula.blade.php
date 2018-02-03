@@ -151,16 +151,8 @@
 
                     @if(Auth::check())
 
-                    
 
-                            <div class="alert alert-success alert-dismissable">
-                                <p style="font-size: 20px;"><strong>! No se está mostrando todas las películas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
-                            </div>
-
-
-
-
-                           
+                    @if(count($subscription))
 
                     <div id="tabs">
                             <ul>
@@ -202,6 +194,57 @@
                         @endif
                     
                     </div>
+
+                    @else
+
+                    <div class="alert alert-success alert-dismissable">
+                        <p style="font-size: 20px;"><strong>! No se está mostrando todas las películas  ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="{{url('user/perfil/paywithpaypal')}}" class="alert-link">Actualizar a cuenta Premium</a> </p>
+                    </div>
+
+                    <div id="tabs">
+                            <ul>
+
+                            @if(count($servers_movies))
+                                                                
+                                @foreach($servers_movies as $servers)
+
+                                @foreach($idiomas as $idioma)
+                                        @if($idioma->id== $servers->languages_id)
+
+                                        <li><a href="#{{$servers->id}}">{{$servers->name}} - {{$idioma->language}}</a></li>
+                                        @endif
+
+                                @endforeach
+
+
+
+                                @endforeach
+
+                            
+
+
+                            @endif
+
+                            
+
+                            </ul>
+
+                        @if(count($servers_movies))
+                                                            
+                            @foreach($servers_movies as $servers)
+                                <div id="{{$servers->id}}">
+
+                                {!! $servers->embed_code !!}
+                                    
+                                </div>
+                            @endforeach
+                        @endif
+                    
+                    </div>
+
+
+                    @endif
+
 
                     @endif
                 

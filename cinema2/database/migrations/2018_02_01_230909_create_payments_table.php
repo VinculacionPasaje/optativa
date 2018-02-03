@@ -4,21 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubscriptionTable extends Migration
+class CreatePaymentsTable extends Migration
 {
-    /**
+     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('subscription', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-             $table->char('state',1)->default(1);
+            $table->integer('payment');
             $table->date('date_start');
             $table->date('date_end');
-             $table->integer('payment');
          
            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -33,6 +32,6 @@ class CreateSubscriptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscription');
+        Schema::dropIfExists('payments');
     }
 }

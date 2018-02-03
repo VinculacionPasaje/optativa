@@ -88,8 +88,57 @@
 
         @if(Auth::check())
 
-           	<div class="alert alert-success alert-dismissable">
-				<p style="font-size: 20px;"><strong>! No se está mostrando todas las series ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+	
+
+			@if(count($subscription))
+
+
+			@if(count($todas_series))
+                                                    
+                @foreach($todas_series as $peli)
+
+                <div class="col-md-2 w3l-movie-gride-agile">
+							<a href="{{url ('serie/'.$peli->id)}}" class="hvr-shutter-out-horizontal"><img src="{{url('fotos/'.$peli->path)}}" title="{{$peli->name}}" class="img-responsive" alt=" {{$peli->name}}" />
+								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+							</a>
+							<div class="mid-1 agileits_w3layouts_mid_1_home">
+								<div class="w3l-movie-text">
+									<h6><a href="{{url ('serie/'.$peli->id)}}">{{$peli->name}}</a></h6>							
+								</div>
+								<div class="mid-2 agile_mid_2_home">
+									<p>{{$peli->year}}</p>
+									<div class="block-stars">
+										<ul class="w3l-ratings">
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="ribben">
+								<p>Nuevo</p>
+							</div>
+				</div>
+
+
+                @endforeach
+             @endif
+
+
+
+
+
+
+
+
+			@else
+
+			<div class="alert alert-success alert-dismissable">
+				<p style="font-size: 20px;"><strong>! No se está mostrando todas las series  ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="{{url('user/perfil/paywithpaypal')}}" class="alert-link">Actualizar a cuenta Premium</a> </p>
 			</div>
 
 
@@ -127,6 +176,14 @@
 
                 @endforeach
              @endif
+
+
+
+			@endif
+
+		
+
+           	
 
 
 

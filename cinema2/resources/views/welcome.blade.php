@@ -213,8 +213,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</li>
 								</ul>
 							</li>
-							<li><a href="#">SERIES TV</a></li>
-							<li><a href="#">PELICULAS</a></li>
+							<li><a href="{{ url('series') }}">SERIES TV</a></li>
+							<li><a href="{{ url('peliculas') }}">PELICULAS</a></li>
 							
 							@if (Route::has('login'))
 								
@@ -316,12 +316,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			@if(Auth::check())
 
+			@if(count($subscription))
+
+			@else
+
 			<div class="alert alert-success alert-dismissable">
-				<p style="font-size: 20px;"><strong>! No se está mostrando todas las películas ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+				<p style="font-size: 20px;"><strong>! No se está mostrando todas las películas  ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="{{url('user/perfil/paywithpaypal')}}" class="alert-link">Actualizar a cuenta Premium</a> </p>
 			</div>
 
 
-
+			@endif
 
 			@endif
 
@@ -410,12 +414,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			@if(Auth::check())
 
+			@if(count($subscription))
+
+			@else
+
 			<div class="alert alert-success alert-dismissable">
-				<p style="font-size: 20px;"><strong>! No se está mostrando todas las series ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="#" class="alert-link">Actualizar a cuenta Premium</a> </p>
+				<p style="font-size: 20px;"><strong>! No se está mostrando todas las series ¡</strong> Accesa a la cuenta premium para disfrutar de todo el contenido aqui -> <a href="{{url('user/perfil/paywithpaypal')}}" class="alert-link">Actualizar a cuenta Premium</a> </p>
 			</div>
 
 
-
+			@endif
 
 			@endif
 
@@ -1263,48 +1271,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="container">
 			<div class="w3ls_footer_grid">
-				<div class="col-md-6 w3ls_footer_grid_left">
-					<div class="w3ls_footer_grid_left1">
-						<h2>Subscribe to us</h2>
-						<div class="w3ls_footer_grid_left1_pos">
-							<form action="#" method="post">
-								<input type="email" name="email" placeholder="Your email..." required="">
-								<input type="submit" value="Send">
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 w3ls_footer_grid_right">
-					<a href="index.html"><h2>One<span>Movies</span></h2></a>
+				
+				<div class="col-md-12" align="center">
+					<a href="{{ url('/')}}"><h2>CINEMA<span> TV</span></h2></a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-md-5 w3ls_footer_grid1_left">
-				<p>&copy; 2016 One Movies. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+					<p>&copy; 2018 CINEMA TV. All rights reserved | Design by <a href="#">CGM</a></p>
 			</div>
 			<div class="col-md-7 w3ls_footer_grid1_right">
 				<ul>
 					<li>
-						<a href="genres.html">Movies</a>
+						<a href="{{ url('peliculas') }}">Peliculas</a>
 					</li>
 					<li>
-						<a href="faq.html">FAQ</a>
+						<a href="{{ url('series') }}">Series</a>
 					</li>
-					<li>
-						<a href="horror.html">Action</a>
-					</li>
-					<li>
-						<a href="genres.html">Adventure</a>
-					</li>
-					<li>
-						<a href="comedy.html">Comedy</a>
-					</li>
-					<li>
-						<a href="icons.html">Icons</a>
-					</li>
-					<li>
-						<a href="contact.html">Contact Us</a>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="clearfix"> </div>

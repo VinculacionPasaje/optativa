@@ -50,7 +50,7 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo"><span>Space</span>Lab</a>
+                <a href="{{url ('user/perfil')}}" class="logo"><span>Cinema </span>TV</a>
             </div>
             <!--logo end-->
             <div class="toggle-navigation toggle-left">
@@ -105,32 +105,25 @@
             <div id="leftside-navigation" class="nano">
                 <ul class="nano-content">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                        <a href="{{url ('user/perfil')}}"><i class="fa fa-dashboard"></i><span>INICIO</span></a>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>UI Elements</span><i class="arrow fa fa-angle-right pull-right"></i></a>
-                        <ul>
 
-                            <li><a href="ui-alerts-notifications.html">Alerts &amp; Notifications</a>
-                            </li>
-                            <li><a href="ui-panels.html">Panels</a>
-                            </li>
-                            <li><a href="ui-buttons.html">Buttons</a>
-                            </li>
-                            <li><a href="ui-slider-progress.html">Sliders &amp; Progress</a>
-                            </li>
-                            <li><a href="ui-modals-popups.html">Modals &amp; Popups</a>
-                            </li>
-                            <li><a href="ui-icons.html">Icons</a>
-                            </li>
-                            <li><a href="ui-grid.html">Grid</a>
-                            </li>
-                            <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a>
-                            </li>
-                            <li><a href="ui-nestable-list.html">Nestable Lists</a>
-                            </li>
-                        </ul>
+                     <li>
+                        <a href="{{url ('/')}}"><i class="fa fa-dashboard"></i><span>VER PELICULAS Y SERIES</span></a>
                     </li>
+
+                    <li>
+
+                
+                        <a href="{{url('user/perfil/paywithpaypal')}}"><i class="fa fa-dashboard"></i><span>SUBIR A PREMIUM</span></a>
+                    </li>
+
+                     <li>
+                        <a href="{{url ('/')}}"><i class="fa fa-dashboard"></i><span>PAGOS REALIZADOS</span></a>
+                    </li>
+
+
+                    
 
                 </ul>
             </div>

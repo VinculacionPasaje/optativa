@@ -21,6 +21,11 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use DB;
+use PDO;
+use \Datetime;
+use Illuminate\Support\Facades\Auth;
+
 class AddMoneyController
 {
     private $_api_context;
@@ -45,7 +50,32 @@ class AddMoneyController
      */
     public function payWithPaypal()
     {
-        return view('paywithpaypal');
+       
+            $id = Auth::user()->id;
+            $subscription = DB::select("SELECT get_subscription($id) AS mfrc FROM dual"); 
+        
+
+        if(count($subscription)){
+         $fecha_actual=date("Y-m-d");
+
+
+         $datetime = $subscription[0]->date_end; 
+         $dt= strtotime($datetime); //make timestamp with datetime string 
+
+         $fecha_fin= date('Y-m-d', $dt);
+
+         $datetime1 = new DateTime($fecha_actual);
+         $datetime2 = new DateTime($fecha_fin);
+
+        $diff = $datetime1->diff($datetime2);
+
+
+        }
+
+        
+        
+        #dd($diff->days . ' days ');
+         return view('administration.premium.index', compact('subscription', 'diff'));
     }
     /**
      * Store a details of payment with paypal.
@@ -61,12 +91,12 @@ class AddMoneyController
         $item_1->setName('Item 1') /** item name **/
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->get('amount')); /** unit price **/
+            ->setPrice(1); /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal($request->get('amount'));
+            ->setTotal(1);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
