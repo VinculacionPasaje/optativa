@@ -88,7 +88,7 @@ class AddMoneyController
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();
-        $item_1->setName('Item 1') /** item name **/
+        $item_1->setName('Subscripción Premium Cinema Tv') /** item name **/
             ->setCurrency('USD')
             ->setQuantity(1)
             ->setPrice(1); /** unit price **/
@@ -100,7 +100,7 @@ class AddMoneyController
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription('Your transaction description');
+            ->setDescription('Pago por realizar subscripción mensual a Cinema TV');
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('payment.status')) /** Specify return URL **/
             ->setCancelUrl(URL::route('payment.status'));
@@ -120,7 +120,7 @@ class AddMoneyController
                 /** $err_data = json_decode($ex->getData(), true); **/
                 /** exit; **/
             } else {
-                \Session::put('error','Some error occur, sorry for inconvenient');
+                \Session::put('error','Ocurrio algún error, lo sentimos por el incoveniente');
                 return Redirect::route('addmoney.paywithpaypal');
                 /** die('Some error occur, sorry for inconvenient'); **/
             }
@@ -137,7 +137,7 @@ class AddMoneyController
             /** redirect to paypal **/
             return Redirect::away($redirect_url);
         }
-        \Session::put('error','Unknown error occurred');
+        \Session::put('error','Ah ocurrido un error');
         return Redirect::route('addmoney.paywithpaypal');
     }
     public function getPaymentStatus()
@@ -147,7 +147,7 @@ class AddMoneyController
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-            \Session::put('error','Payment failed');
+            \Session::put('error','Pago fallido');
             return Redirect::route('addmoney.paywithpaypal');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -161,13 +161,48 @@ class AddMoneyController
         $result = $payment->execute($execution, $this->_api_context);
         /** dd($result);exit; /** DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') { 
+
+            $id = Auth::user()->id;
+            $subscription = DB::select("SELECT get_subscription($id) AS mfrc FROM dual"); 
+        
+
+            if(count($subscription)){
+
+            $fecha_actual=date("d/m/Y");
+
+            $fecha_actual2=date("d-m-Y");
+
+          
+            $nuevafecha = strtotime ( '+30 day' , strtotime ( $fecha_actual2 ) ) ;
+            $nuevafecha2 = date ( 'd/m/Y' , $nuevafecha );
+
+                    //se hace un update A LOS CAMPOS STATE, DATE_START, DATE_END DEL registro del usuario en la tabla subscripcion
+                     DB::update('call UPDATE_SUBSCRIPCION(?,?,?,?)',[$id, $fecha_actual, $nuevafecha2, '1']);
+
+            }else{
+
+            $fecha_actual=date("d/m/Y");
+
+            $fecha_actual2=date("d-m-Y");
+
+          
+            $nuevafecha = strtotime ( '+30 day' , strtotime ( $fecha_actual2 ) ) ;
+            $nuevafecha2 = date ( 'd/m/Y' , $nuevafecha );
+
+                //se hace un insert a la tabla subscripcion
+
+            //PARA EJECUTAR STORED PROCEDURED INSER con CALL EN PLSQL
+            DB::insert('call insert_subscripcion(?,?,?,?)',[$fecha_actual, $nuevafecha2, $id, 1]);
+
+
+            }
             
             /** it's all right **/
             /** Here Write your database logic like that insert record or value in database if you want **/
-            \Session::put('success','Payment success');
+            \Session::put('success','Pago realizado correctamente');
             return Redirect::route('addmoney.paywithpaypal');
         }
-        \Session::put('error','Payment failed');
+        \Session::put('error','Error al realizar el pago');
         return Redirect::route('addmoney.paywithpaypal');
     }
   }

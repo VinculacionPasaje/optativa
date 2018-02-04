@@ -119,7 +119,7 @@
                     </li>
 
                      <li>
-                        <a href="{{url ('/')}}"><i class="fa fa-dashboard"></i><span>PAGOS REALIZADOS</span></a>
+                        <a href="{{url ('pagos')}}"><i class="fa fa-dashboard"></i><span>PAGOS REALIZADOS</span></a>
                     </li>
 
 

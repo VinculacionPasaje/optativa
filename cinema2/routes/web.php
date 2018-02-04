@@ -51,6 +51,7 @@
 
        #perfil y editar perfil
       Route::get('user/perfil', 'HomeUserController@mi_perfil');
+      Route::get('pagos', 'HomeUserController@pagos');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -64,3 +65,6 @@ Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyControlle
 
         //vistas de administracion
         Route::resource('administracion/usuarios','UsuarioController');
+
+         //vistas de administracion
+        Route::resource('administracion/subscripciones','SubscriptionController');
