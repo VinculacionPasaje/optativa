@@ -51,8 +51,12 @@ class AddMoneyController
     public function payWithPaypal()
     {
        
-            $id = Auth::user()->id;
-            $subscription = DB::select("SELECT get_subscription($id) AS mfrc FROM dual"); 
+            if(Auth::check()){
+                $id = Auth::user()->id;
+                $subscription = DB::select("SELECT get_subscription($id) AS mfrc FROM dual"); 
+            }else{
+                $subscription=0;
+            }
         
 
         if(count($subscription)){
@@ -91,12 +95,12 @@ class AddMoneyController
         $item_1->setName('Subscripción Premium Cinema Tv') /** item name **/
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice(1); /** unit price **/
+            ->setPrice(0.15); /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal(1);
+            ->setTotal(0.15);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)

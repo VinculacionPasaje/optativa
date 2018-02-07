@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 class SubscriptionController extends Controller
 {
      public function index(){
+         
         $subscripciones = Subscription::where('state',1)->orderBy('id')->paginate(10);
         return View('administration.subscripciones.index',compact('subscripciones'));
 

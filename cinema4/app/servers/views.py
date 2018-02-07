@@ -158,3 +158,29 @@ def server_edit(request, id_server):
             messages.error(request, 'ah ocurrido un error') 
         return redirect('servers:server_listar')
     return render(request, 'servers/server_form.html', {'form': form})
+
+
+def idioma_delete(request, id_idioma):
+    idioma= Language.objects.get(id=id_idioma)
+    if request.method=='POST':
+        #mascota.delete()
+        cursor = connection.cursor()
+        cursor.callproc("DELETE_IDIOMA", (id_idioma,))
+        cursor.close()
+        messages.success(request, 'Idioma eliminado correctamente!')
+        return redirect('servers:idioma_listar')
+    return render(request, 'servers/idiomas_delete.html', {'idioma': idioma})
+
+def server_delete(request, id_server):
+    idioma= Server.objects.get(id=id_server)
+    if request.method=='POST':
+        #mascota.delete()
+        cursor = connection.cursor()
+        cursor.callproc("DELETE_SERVER_PELICULA", (id_server,))
+        cursor.close()
+        messages.success(request, 'Servidor eliminado correctamente!')
+        return redirect('servers:server_listar')
+    return render(request, 'servers/server_delete.html', {'server': idioma})
+
+
+
